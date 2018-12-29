@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage{geometry} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,francais]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx, float}
+\usepackage{tikz,tkz-tab}
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+
+\fancyhead{} % No page header
+\fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+% Début du document
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+$$\sqrt{1 - x } + \sqrt{1 + x } + 2\sqrt{1 - x^2 } = 4$$
+
+\setlength{\columnseprule}{1pt}
+\begin{multicols}{2}
+
+\subsection*{domaine de définition}
+
+\textit{des racines donc des problèmes pour les valeurs négatives.}
+
+\begin{eqnarray*}
+1 - x &\geq& 0 \\
+1 + x &\geq& 0 \\
+1 - x^2 &\geq& 0
+\end{eqnarray*}
+
+On cherche $x \in [-1 ; 1]$
+
+\subsection*{Factorisation}
+
+On sait que $a^2 + b^2 + 2ab = (a+b)^2$ \\
+
+On prend $a = \sqrt{1 - x }$ et $b = \sqrt{1 + x }$.\\
+
+De plus : 
+
+\begin{eqnarray*}
+ab &=& \sqrt{1 + x } \times \sqrt{1 - x } \\
+ab &=& \sqrt{(1+x)(1-x)} \\
+ab &=& \sqrt{1 - x^2}
+\end{eqnarray*}
+
+On factorise notre équation.
+
+\begin{eqnarray*}
+\sqrt{1 - x } + \sqrt{1 + x } + 2\sqrt{1 - x^2 } &=& 4 \\
+(\sqrt{1-x} + \sqrt{1+x})^2 &=& 4 \\
+ \left\{
+      \begin{aligned}
+\sqrt{1-x} + \sqrt{1+x} &=& 2 \\
+\sqrt{1-x} + \sqrt{1+x} &=& -2 \\
+      \end{aligned}
+    \right.
+\end{eqnarray*}
+
+\textit{ // impossible, une somme de racine de ne peut être négative dans R.}
+
+\subsection*{Changement de variable}
+
+$$\sqrt{1-x} + \sqrt{1+x} = 2$$
+
+On pose  $y = \sqrt{1-x}$
+
+On a alors : 
+
+\begin{eqnarray*}
+y &=& \sqrt{1-x} \\
+y^2 &=& 1-x \\
+x &=& 1-y^2 \\ 
+\end{eqnarray*}
+
+On obtient aussi :
+
+\begin{eqnarray*} 
+\sqrt{1+x} &=& \sqrt{1+1-y^2} \\
+\sqrt{1+x} &=& \sqrt{2-y^2} 
+\end{eqnarray*}
+
+d'où notre équation : 
+
+\begin{eqnarray*} 
+\sqrt{1-x} + \sqrt{1+x}) &=& 2 \\
+y + \sqrt{2-y^2}  &=& 2  \\
+y - 2 &=& - \sqrt{2-y^2}\\
+(y - 2)^2 &=& 2 - y^2\\
+y^2 -4y + 4 &=& 2 - y^2\\
+2y^2 - 4y + 2 &=& 0
+\end{eqnarray*}
+
+\subsection*{Polynôme du second degré}
+
+Calcul du discriminant
+
+\begin{eqnarray*} 
+\Delta &=& 4^4 - 4\times 2\times 2 \\
+\Delta &=& 0
+\end{eqnarray*}
+
+Une seule racine double.
+\begin{eqnarray*} 
+y &=& -\dfrac{-4}{2\times2} \\
+y &=& 1
+\end{eqnarray*}
+
+\subsection*{Solution}
+
+\begin{eqnarray*} 
+y &=& 1 \\\
+\sqrt{1-x} &=& 1 \\ 
+1-x &=& 1\\
+x &=& 0
+\end{eqnarray*}
+
+x=0 est bien l'unique putain de solution qu'on avait déjà trouver visuellement... mais au moins, on sait qu'il y en a pas d'autre... Même si le tracer graphique de la fonction nous donnait bien le résultat aussi...
+
+\end{multicols}
+
+\end{document}  

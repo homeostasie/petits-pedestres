@@ -1,0 +1,440 @@
+\documentclass[11pt]{article}
+\usepackage{geometry} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,francais]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx, float}
+\usepackage{tikz,tkz-tab}
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+
+\fancyhead{} % No page header
+\fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+% Début du document
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+% RE-DEFINITION
+%----------------------------------------------------------------------------------------
+% MATHS
+%-----------
+
+\newtheorem{Definition}{Définition}
+\newtheorem{Theorem}{Théorème}
+\newtheorem{Proposition}{Propriété}
+
+% MATHS
+%-----------
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+%----------------------------------------------------------------------------------------
+% Titre
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnseprule}{1pt}
+
+\section{Suites}
+
+La suite est-elle monotone correspond à la question des variations d'une fonction. Sauf qu'étudier une suite est un poil plus complexe alors on se contente de demander : est-elle monotone ? on ne peut répondre que trois choses : 
+
+\begin{itemize}
+\item oui ; croissante. ($u_{n+1} > u_n$)
+\item oui ; décroissante. ($u_{n+1} < u_n$)
+\item non.
+\end{itemize}
+
+Cela revient à essayer d'ordonner $u_{n+1}$ et $u_n$. Pour cela plusieurs techniques. 
+
+\begin{itemize}
+\item calculer $u_{n+1} - u_n$. Si on tombe sur un nombre (sans n). On peut conclure. positif = croissant ; négatif ) décroissant. On fait toujours ça dans le cadre des suites arithmétiques. 
+\item calculer $\dfrac{u_{n+1}}{u_n}$. Un peu plus complexe comme cas (car il faut faire gaffe au nombre négatif), mais en gros si > 1 alors croissant. On fait toujours ça dans le cadre des suites géométriques.
+\end{itemize}
+
+Ici sur les suites, géométriques et arithmétiques, il y a un peu de cours. Genre les variations sont immédiates dès qu'on connaît le premier terme et la raison.
+
+\newpage
+
+\begin{multicols}{2}
+  \section{exercice 2}
+  
+  \begin{enumerate}
+  \item[1a.] 
+    \begin{eqnarray*}
+      u_{n+1} &=& u_n + r \\
+      u_n &=& u_0 + nr \\
+      u_n &=& 5 + n \times (-3)\\
+      u_n &=& 5 - 3n 
+    \end{eqnarray*}
+    
+  \item[1b.] 
+    \begin{eqnarray*}
+      u_{30} &=& u_0 + 30 \times r \\
+      u_{30} &=& 5 - 30 \times 3\\
+      u_{30} &=& 5 - 90\\
+      u_{30} &=& -85 
+    \end{eqnarray*}
+    
+  \item[1c.] 
+    \begin{eqnarray*}
+      u_{n+1} - u_n &=& r \\
+      u_{n+1} - u_n &=& -3
+    \end{eqnarray*}
+    Donc $u_{n+1} < u_n$. La suite est monotone et décroissante.
+  \end{enumerate}
+\end{multicols}
+\horrule{1px}
+\begin{multicols}{2}
+  \begin{enumerate}
+  \item[2a.] \textit{ (ici, il faut faire attention car on part du rang 1 et non 0.)}
+    \begin{eqnarray*}
+      v_{n+1} &=& v_n + r \\
+      v_n &=& v_1 + (n-1) \times r \\
+      v_n &=& \dfrac{4}{5} + (n-1) \times \dfrac{2}{5}
+    \end{eqnarray*}
+    
+  \item[2b.] 
+    \begin{eqnarray*}
+      v_{30} &=& v_1 + (30-1) \times r \\
+      v_{30} &=& \dfrac{4}{5} + (30-1) \times \dfrac{2}{5}\\
+      v_{30} &=& \dfrac{4}{5} + 29 \times \dfrac{2}{5}\\
+      v_{30} &=& \dfrac{4}{5} + \dfrac{58}{5}\\
+      v_{30} &=& \dfrac{20}{15} + \dfrac{174}{15}\\
+      v_{30} &=& \dfrac{194}{15} 
+    \end{eqnarray*}
+    
+  \item[2c.] 
+    \begin{eqnarray*}
+      v_{n+1} - v_n &=& r \\
+      v_{n+1} - v_n &=& \dfrac{2}{5}
+    \end{eqnarray*}
+    Donc $v_{n+1} > v_n$. La suite est monotone et croissante.
+  \end{enumerate}
+  
+\end{multicols}
+\horrule{1px}
+\begin{multicols}{2}
+  
+  \begin{enumerate}
+  \item[3a.] \textit{ (ici, il faut faire attention car on part du rang 1 et non 0.)}
+    \begin{eqnarray*}
+      w_{n+1} &=& w_n \times q \\
+      w_n &=& w_1 \times q^{n-1} \\
+      w_n &=& -2 \times 3^{n-1}
+    \end{eqnarray*}
+    Étude du signe de $w_n$.
+    \begin{eqnarray*}
+      3 &>& 0 \\
+      3^{n-1} &>& 0 \\
+      -2 \times 3^{n-1} &<& 0 \\
+      w_n &<& 0 
+    \end{eqnarray*}
+    $w_n$ est négatif.
+    
+  \item[3b.] 
+    \begin{eqnarray*}
+      w_{50} &=& w_1 \times q^{50-1} \\
+      w_{50} &=& -2 \times 3^{49}
+    \end{eqnarray*}
+    
+  \item[3c.] 
+    \begin{eqnarray*}
+      \dfrac{w_{n+1}}{w_n} &=& q \\
+      \dfrac{w_{n+1}}{w_n} &=& 3
+    \end{eqnarray*}
+    La suite est monotone. 
+    Comme le premier terme est $w_1 = -2$ est négatif. La suite est décroissante.
+  \end{enumerate}
+\end{multicols}
+\horrule{1px}
+\begin{multicols}{2}
+  \begin{enumerate}
+  \item[4a.] 
+    \begin{eqnarray*}
+      t_{n+1} &=& t_n \times q \\
+      t_n &=& t_0 \times q^n \\
+      t_n &=& 1000 \times \left(-\dfrac{1}{2} \right)^n 
+    \end{eqnarray*}
+    
+    Étude du signe de $t_n$.
+    \begin{eqnarray*}
+      1000 &>& 0 \\
+      \left(-\dfrac{1}{2} \right) &<& 0 \\
+      \left(-\dfrac{1}{2} \right)^n &>& 0 \text{ si n est pair.} \\
+      \left(-\dfrac{1}{2} \right)^n &<& 0 \text{ sinon.}
+    \end{eqnarray*}
+    Le signe de la suite change à chaque rang. La suite est positive quand le rang est pair, et négative quand le rang est impair. 
+    
+  \item[4b.] 
+    \begin{eqnarray*}
+      t_{50} &=& t_0 \times q^{50} \\
+      t_{50} &=& 1000 \times \left(-\dfrac{1}{2} \right)^{50} \\
+      t_{50} &=& 1000 \times \dfrac{1}{2^{50}}
+    \end{eqnarray*}
+    
+  \item[4c.] La suite est géométrique de raison $q = -\dfrac{1}{2}$. Les termes de la suite change donc de signe au rang suivant. La suite n'est donc pas monotone. (Elle converge par contre vers 0.) 
+  \end{enumerate} 
+  
+\end{multicols}
+
+\newpage
+
+\begin{multicols}{2}
+  \section{exercice 3}
+  \begin{enumerate}
+  \item[1.] 
+    \begin{eqnarray*}
+      u_0 &=& \dfrac{3n - 7}{2n + 3} \\
+      u_0 &=& \dfrac{- 7}{3}
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      u_1 &=& \dfrac{3n - 7}{2n + 3} \\
+      u_1 &=& \dfrac{3 - 7}{2 + 3} \\
+      u_1 &=& \dfrac{- 4}{5} \\
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      u_2 &=& \dfrac{3n - 7}{2n + 3} \\
+      u_2 &=& \dfrac{3\times 2 - 7}{2\times 2 + 3} \\
+      u_2 &=& \dfrac{6 - 7}{4 + 3} \\
+      u_2 &=& \dfrac{- 1}{7} \\
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      u_5 &=& \dfrac{3n - 7}{2n + 3} \\
+      u_5 &=& \dfrac{3\times 5 - 7}{2\times 5 + 3} \\
+      u_5 &=& \dfrac{15 - 7}{10 + 3} \\
+      u_5 &=& \dfrac{8}{13}
+    \end{eqnarray*}
+  \end{enumerate}
+\end{multicols}
+
+\begin{enumerate}
+\item[2.] Ici, on est sur une suite un peu plus originale. Il faut un peu plus chercher à la main.
+  \begin{eqnarray*}
+    u_{n+1} - u_n &=& \dfrac{3(n+1) - 7}{2(n+1) + 3} - \dfrac{3n - 7}{2n + 3}\\
+    u_{n+1} - u_n &=& \dfrac{3n - 4}{2n + 5} - \dfrac{3n - 7}{2n + 3}\\
+    \textit{On met sur le même dénominateur.} \\
+    u_{n+1} - u_n &=& \dfrac{(3n - 4)(2n + 3)}{(2n + 5)(2n + 3)} - \dfrac{(3n - 7)(2n + 5)}{(2n + 3)(2n + 5)}\\
+    u_{n+1} - u_n &=& \dfrac{(3n - 4)(2n + 3) - (3n - 7)(2n + 5)}{(2n + 5)(2n + 3)}
+  \end{eqnarray*}
+  
+  \textit{On simplifie le numérateur. Ici, c'est parfois une bonne astuce en terme de gain de temps et d'emmerdement de ne s'occuper que de la partie qui nous intéresse. On reviendra au reste après. Mais ça évite de se balader avec une fraction pour la simplification.}
+  \begin{eqnarray*}
+    (3n - 4)(2n + 3) - (3n - 7)(2n + 5) &=& (6n^2 + 9n - 8n - 12) - (6n^2 + 15n - 14n - 35) \\
+    &=& (6n^2 + n - 12) - (6n^2 + n - 35) \\
+    &=& -12 - (-35) \\
+    &=& -12 + 35 \\
+    &=& 23 \\ 
+  \end{eqnarray*}
+  
+  Donc $u_{n+1} - u_n = \dfrac{23}{(2n + 5)(2n + 3)}$.
+  \begin{eqnarray*}
+    2n + 5 &>& 0 \\
+    2n + 3 &>& 0 \\
+    23 &>& 0 \\
+    \dfrac{23}{(2n + 5)(2n + 3)} &>& 0 \\
+    u_{n+1} - u_n &>& 0 
+  \end{eqnarray*}
+  
+  La suite est croissante.
+  
+\end{enumerate}
+
+\newpage
+
+\begin{multicols}{2}
+  \section{exercice 4}
+  \begin{enumerate}
+  \item[1.] 
+    \begin{eqnarray*}
+      u_1 &=& u_{0}^{2} - 2u_0 + 3 \\
+      u_1 &=& 1 - 2 + 3 \\
+      u_1 &=& 2
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      u_2 &=& u_{1}^{2} - 2u_1 + 3 \\
+      u_2 &=& 2^2 - 2 \times 2 + 3 \\
+      u_2 &=& 4 - 4 + 3 \\
+      u_2 &=& 3
+    \end{eqnarray*}
+    
+    Ici, on est obligé de calculer les rang 3 et 4.
+    
+    \begin{eqnarray*}
+      u_3 &=& u_{2}^{2} - 2u_2 + 3 \\
+      u_3 &=& 3^2 - 2 \times 3 + 3 \\
+      u_3 &=& 9 - 6 + 3 \\
+      u_3 &=& 6
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      u_4 &=& u_{3}^{2} - 2u_3 + 3 \\
+      u_4 &=& 6^2 - 2 \times 6 + 3 \\
+      u_4 &=& 36 - 12 + 3 \\
+      u_4 &=& 27
+    \end{eqnarray*}
+    
+    pas très drôle à calculer sans calculatrice... $(27 \times 25 + 3)$
+    \begin{eqnarray*}
+      u_5 &=& u_{4}^{2} - 2u_4 + 3 \\
+      u_5 &=& 27^2 - 2 \times 27 + 3 \\
+      u_5 &=& 678
+    \end{eqnarray*}
+    
+  \item[2.] Je n'aime pas trop ces questions : sans calcul mais en justifiant... On ne sait jamais trop ce qu'on veut.\\
+    En s'appuyant sur le trinôme du second degré : $x^2 -2x +3$. Le coefficient du carré est positif. De plus $u_0 = 1$.\\
+    La suite semble croissante et a termes positifs.
+    
+  \item[3a.] 
+    \begin{eqnarray*}
+      u_{n+1} - u_n &=& u_{n}^{2} - 2u_n + 3 - u_n\\
+      u_{n+1} - u_n &=& u_{n}^{2} - 3u_n + 3
+    \end{eqnarray*}
+    
+  \item[3b.] Soit $f(x) = x^2 -3x + 3$.
+    (Pour étudier le signe, nulle besoin de passer par la dérivée. Ici, on utilise plus la forme général et passe par le discriminant.)
+    
+    \begin{eqnarray*}
+      \Delta &=& b^2 - 4ac \\
+      \Delta &=& (-3)^2 - 4 \times 1 \times 3 \\
+      \Delta &=& 9 - 12 \\
+      \Delta &=& -3
+    \end{eqnarray*}
+    
+    L'équation $f(x) = 0$ n'a pas de racine réèlle. $f(x)$ est donc du signe de $a$. 
+    Donc $f(x) > 0$ pour tout $x$ réel.
+    
+  \item[3c.]
+    
+    \begin{eqnarray*}
+      f(x) &>& 0 \\
+      u_{n+1} - u_n &>& 0 \\
+      \text{donc } u_{n+1} > u_n 
+    \end{eqnarray*}
+    La suite est croissante.
+    
+  \item[3d.] La suite est croissante et le premier terme est $u_0 = 1$ est positif. La suite est à termes tous positifs.
+    
+  \end{enumerate}
+\end{multicols}
+
+\newpage
+
+
+\begin{multicols}{2}
+  \section{exercice 5} 
+
+  La lecture de l'énoncé est ici un peu plus complexe et prend un peu plus de temps. Il faut faire attention car la suite correspond à une proportion et non à un nombre de personne. De plus, on s'intéresse au nombre de non-fumeurs. Les calculs sont un peu cotons par contre, sans calculatrice, c'est pas une partie de plaisir...
+  
+  \begin{enumerate}
+  \item[1.] On a au départ 2000 fumeurs. Au premier jour, 1600 fument encore. Donc 400 ne fument pas / plus. 
+    \begin{eqnarray*}
+      p_1 &=& \dfrac{400}{2000} \\
+      p_1 &=& 0.2
+    \end{eqnarray*}
+    
+    \begin{eqnarray*}
+      p_2 &=& -0.6 p_1 + 0.9 \\
+      p_2 &=& -0.6 \times 0.2 + 0.9 \\
+      p_2 &=& -0.12 + 0.9 \\
+      p_2 &=& 0.78
+    \end{eqnarray*}
+
+  \item[2a.] La question est un poil plus dur que d'habitude. Je suis redevenue à la définition.\\
+    Montrons que $u_{n+1} = -0.6 u_n$.
+    \begin{eqnarray*}
+      u_n &=& p_n - 0.5625 \\
+      -0.6 u_n &=& -0.6(p_n - 0.5625) \\
+      -0.6 u_n &=& -0.6p_n + 0.3375 \\
+      u_{n+1} &=& p_{n+1} - 0.5625 \\
+      u_{n+1} &=& -0.6 p_n + 0.9 - 0.5625 \\
+      u_{n+1} &=& -0.6 p_n + 0.3375 \\
+    \end{eqnarray*}
+    
+    Donc $u_{n+1} = -0.6 u_n$.
+    
+    \begin{eqnarray*}
+      u_1 &=& p_1 - 0.5625 \\
+      u_1 &=& 0.2 - 0.5625 \\
+      u_1 &=& - 0.3625 \\
+    \end{eqnarray*}
+    
+    La suite $(u_n)$ est géométrique de raison $-0.6$.
+    
+  \item[2b.] 
+    \begin{eqnarray*}
+      u_n &=& u_1 \times q^{n-1} \\
+      u_n &=& -0.3625 \times (-0.6)^{n-1}
+    \end{eqnarray*}
+    
+  \item[3.] 
+    \begin{eqnarray*}
+      u_n &=& p_n - 0.5625 \\
+      p_n &=& u_n + 0.5625 \\
+      p_n &=& -0.3625 \times (-0.6)^{n-1} + 0.5625 \\ 
+    \end{eqnarray*}
+
+
+  \end{enumerate}
+\end{multicols}
+
+\begin{enumerate}
+
+\item[4a.] 
+  \begin{eqnarray*}
+    p_{n+1} - p_n &=& ( -0.3625 \times (-0.6)^{n} + 0.5625) - ( -0.3625 \times (-0.6)^{n-1} + 0.5625) \\
+    p_{n+1} - p_n &=& -0.3625 \times (-0.6)^{n} + 0.3625 \times (-0.6)^{n-1} \\
+    p_{n+1} - p_n &=& (-0.6)^{n-1} \times (-0.3625 \times (-0.6) + 0.3625 ) \\
+    p_{n+1} - p_n &=& (-0.6)^{n-1} \times (-0.3625 \times (-0.6 + 1) \\
+    p_{n+1} - p_n &=& (-0.6)^{n-1} \times 0.58 \\ 
+  \end{eqnarray*}
+  
+\item[4b.] $(-0.6)^{n-1}$ change de signe à chaque rang. $(-0.6)^{n-1} < 0$ si n est pair et $(-0.6)^{n-1} > 0$ sinon.
+  La suite n'est pas monotone.
+  
+\item[4c.]
+  \begin{eqnarray*}
+    p_{25} &=& -0.3625 \times (-0.6)^{25-1} + 0.5625 \\
+    p_{25} &\approx& 0.5625
+  \end{eqnarray*}
+  
+\item[5a.] Les questions sont ici assez ouvertes. Je ne suis pas certain de ce dont ils veulent. \\
+  
+  Au fil des jours, la proportion de non-fumeurs augmente de façon non monotone jusqu'à se stabiliser vers 0.5625. 
+  
+\item[5b.] La proportion se stabilise vers 0.5625. Avec une population de départ de 2000. Il y a à la fin de l'enquête 1125 non fumeurs. \\
+  $2000 \times 0.5625 = 1125$ \\
+  Ce nombre est stable au jour le jour mais ne représente pas le nombre de personne ayant arrêté de fumer. Il représente le nombre de personne ne fumant pas à un jour précis. En effet dans ce nombre, certain reprendront le lendemain alors que d'autre fumant aujourd'hui s’arrêteront demain et peut-être reprendront juste après... Ces nombres se compensent. Du coup, cette enquête ne donne pas une réponse précise sur les personnes ayant arrêtées de fumer sur le long terme. 
+\end{enumerate}
+
+\end{document}  

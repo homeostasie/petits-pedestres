@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage{geometry} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,francais]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx, float}
+\usepackage{tikz,tkz-tab}
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+
+\fancyhead{} % No page header
+\fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	Début du document
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+% RE-DEFINITION
+%----------------------------------------------------------------------------------------
+% MATHS
+%-----------
+
+\newtheorem{Definition}{Définition}
+\newtheorem{Theorem}{Théorème}
+\newtheorem{Proposition}{Propriété}
+
+% MATHS
+%-----------
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+%----------------------------------------------------------------------------------------
+%	Titre
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnseprule}{1pt}
+
+\section{Statistique}
+
+Dans le doute, je pars du début.
+
+\subsection{Exercice 6}
+
+\begin{enumerate}
+  \item[1.] On étudie une population de 50 souris. (Je pense que le nombre est important. On étudie pas seulement la / des souris.) La taille de l'échantillon est 35. La variable statistique étudié est le nombre de souris noires parmi 50 desecendants.
+
+  \item[2a.]
+  \begin{center}
+    \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c||c|}
+      \hline
+      $x_i$ & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 32 & Total  \\
+      \hline
+      $n_i$ &  1 &  1 &  1 &  2 &  4 &  4 &  5 &  9 &  2 &  2 &  1 &  2 &  1 & 35 \\
+      \hline
+      $n_c$ &  1 &  2 &  3 &  5 &  9 & 13 & 18 & 27 & 29 & 31 & 32 & 34 &  35 & 35 \\
+      \hline      
+    \end{tabular}
+  \end{center}
+
+  \item[2b.] Le mode de la série est 25. \\
+  $\max - \min = 32 - 18 = 14$.\\
+  L'étendue de la série est 14.
+
+  \item[2c.] La médiane sépare la série ordonnée en 2 parties de même effectifs. L'effectif total de la série est 35. La médiane est done la 18ième valeur car $35 = 17 + 1 + 17$.\\
+
+  Dans le tableau la 18ième valeur est 24 descendants de couleur noire.\\
+
+  Les quartiles séparent la série ordonnée à au moins $\frac{1}{4}$ de la série est plus petite puis à $\frac{3}{4}$.
+
+  Q1 : $35 \times \dfrac{1}{4} = 8.75$ (de tête , ce calcul est loin d'être drôle par contre, c'est assez simple de voir que c'est plus petit que 9 car $4\times9 = 36$.) \\
+
+  On prend la 9ième valeur : 22.\\
+  Q1 est 22 descendants de couleur noire.\\
+
+  Q3 : $35 \times \dfrac{3}{4} = 26.25$ (de tête , ce calcul est loin d'être drôle par contre, Mais on peut savoir que 3 c'est pas très loin (toujours en plus petit) que 3 fois le précédent)\\
+
+  On prend la 27ième valeur : 25.\\
+  Q3 est 25 descendants de couleur noire.\\
+
+  \item[3a.] (Je suis assez sceptique sur ce genre de calcul à faire sans calculatrice...)
+
+  \begin{center}
+    \begin{tabular}{|c||c|c|c|c|c|c|c||c|}
+      \hline
+      $x_i$ & [18, 20[ & [20, 22[ & [22, 24[ & [24, 26[ & [26, 28[& [28, 30[& [30, 32[ & Total \\
+      \hline
+      $n_i$ &        2 &        3 &        8 &      14  &       4 &       3 &       1  & 35  \\
+      \hline
+      $n_c$ &        2 &        5 &       13 &      27  &      31 &      34 &      35  & 35 \\ 
+      \hline      
+      $c_i$ &       19 &       21 &       23 &      25  &      27 &      29 &      31  &  \\ 
+      \hline  
+      $n_i c_i$ &   38 &       63 &      184 &     350  &     108 &      87 &      31  & 861 \\ 
+      \hline  
+      $n_i c_i^2$ & 722&     1323 &     4232 &     8750 &    2916 &    2523 &      961 & 21429 \\
+      \hline   
+    \end{tabular}
+  \end{center}
+
+  \item[3b.] Je fais les graphiques en scan, ça ira plus vite pour moi. Attention avec les histogrammes ; il y a un notion de proportionnalité d'aire du rectangle... En gros, il faut faire gaffe quand les classes n'ont pas la même largeur... Sinon, on s'en fout plutôt.
+  Pour les gens tatillons, il faut que l'aire du rectangle soit égale à ton $n_i$...
+  En vrai, on n'en fait rarement et on préfère les diagrammes en batons (même pour des classes...)
+
+  La classe modale est $[24, 26[$.
+
+  \item[3c.] 
+  Moyenne
+  \begin{eqnarray*}
+    m &=& \sum_i \dfrac{n_i c_i}{total} \text{ // Pas certain qu'ils attendent cette notation.} \\
+    m &=& \dfrac{n_1 c_1 + ... + n_7 c_7 }{total} \\
+    m &=& \dfrac{38 + ... + 31}{35} \\
+    m &=& \dfrac{861}{35} \\
+    m &=& 24.6
+  \end{eqnarray*}
+
+  Avec des classes de largeurs deux, en moyenne il y a 24.6 descendants noirs.
+
+ecart-type
+
+\begin{eqnarray*}
+s &=& \sqrt { \frac {1}{total} \sum _i (c_i - m)^2} \\
+s &=& \sqrt { \frac {1}{total} ( \sum _i (n_i c_i^2))  - m^2} \\
+s & \approx & \sqrt { \frac {1}{35} \times (722 + ... + 961) - 24.6^2 } \\
+s & \approx & \sqrt { \frac {1}{35} \times (21427) - 24.6^2 } \\
+s & \approx & \sqrt { 612.2 - 24.6^2 } \\
+s & \approx & \sqrt {7.04} \\
+s & \approx & 2.65 \\
+\end{eqnarray*}
+
+L'écart-type est de 2.65
+
+%data = c(19, 19, 21, 21, 21, rep(23,8), rep(25,14), 27,27,27,27,29,29,29,31)
+
+
+
+\end{enumerate}
+\end{document}

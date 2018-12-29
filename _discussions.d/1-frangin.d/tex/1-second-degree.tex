@@ -1,0 +1,468 @@
+\documentclass[11pt]{article}
+\usepackage{geometry} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,francais]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx, float}
+\usepackage{tikz,tkz-tab}
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+
+\fancyhead{} % No page header
+\fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	Début du document
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+% RE-DEFINITION
+%----------------------------------------------------------------------------------------
+% MATHS
+%-----------
+
+\newtheorem{Definition}{Définition}
+\newtheorem{Theorem}{Théorème}
+\newtheorem{Proposition}{Propriété}
+
+% MATHS
+%-----------
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+%----------------------------------------------------------------------------------------
+%	Titre
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnseprule}{1pt}
+
+\section{Second degrée}
+
+Globalement, on est sur des exercices où l'on fait des gammes, de l'entrainement. Il n'y a pas trop de finesse, ni de raisonnement. Cela veut dire qu'on va faire pas mal de calculs et donc qu'on va devoir faire attention aux erreurs de calculs et d'écritures.\\ 
+
+Exercice 7, on est dans les fonctions du second degrée. C'est assez classique car la résolution est connue et que les variations sont simples. C'est toujours intéréssant d'avoir une idée de ce à quoi ressemble la courbe. Ici, c'est une parabole (\url{https://www.desmos.com/calculator}). 
+
+
+\subsection{résoudre l'équation}
+
+$$ax^2 +bx +c =0$$
+
+On calcule le discriminant : $\Delta = b^2 - 4ac$.\\
+
+\begin{itemize}
+\item $\Delta < 0$ : Pas de solution réélles.
+\item $\Delta = 0$ : Une solution (double) en $x = \frac{-b}{2a}$. C'est de toute façon toujours un extremum pour la courbe. Sauf que là en plus, il touche l'axe horizontal.
+\item $\Delta > 0$ : Deux solutions : $x_1 = \frac{-b - \sqrt{\Delta}}{2a}$ et $x_2 = \frac{-b + \sqrt{\Delta}}{2a}$. 
+\end{itemize}
+
+\subsection{variations}
+
+Ici, je suis toujours un peu mitigé. En vrai, pour les variations on passe toujours par le calcul de la dérivée et on étudie son signe... C'est vraiment le cas, le plus classique et même pour du second degrée, j'aurai tendance à faire ça... Mais, là, dans l'exercice 7, on te fait parler d'équation puis on te dit d'en déduire, les variations... Je pense qu'il souhaite que tu recraches un peu "le cours" sans trop te poser de question.
+
+$$f(x) = ax^2 +bx +c$$
+
+\begin{itemize}
+\item Si $a>0$. La parabole est vers le haut. Elle est décroissante jusqu'en $\dfrac{-b}{2a}$ (le minimum global) puis croissante. 
+\item Si $a<0$. La parabole est vers le bas. Elle est croissante jusqu'en $\dfrac{-b}{2a}$ (le maximum global) puis décroissante. 
+\end{itemize}
+
+\section{Dérivée}
+
+\subsection{Sens}
+Les dérivées servent principalement à étudier les variations d'une fonction. En effet, la valeur de la dérivée correspond à la pente de la courbe. Donc négative quand décroissant et positive quand décroissant. 
+
+\subsection{Calcul}
+
+Là, ça se bachote, on a deux catégories à connaitre :
+
+\begin{itemize}
+\item dérivées usuelles : $x$, $x^2$, $x^3$, $1/x$, $cos(x)$,...
+\item dérivées composées : $f(x) \times g(x)$, $1 / f(x)$, ... 
+\end{itemize}
+
+\newpage
+
+\section{Cours en ligne}
+
+J'ai un peu essayé d'écumer les cours en lignes qu'on peut trouver pour ce niveau. Sans être exhaustif.
+
+\begin{itemize}
+\item \url{https://fr.khanacademy.org/} : Le plus complet et le mieux fait...   
+\item \url{https://www.fun-mooc.fr/cours/#filter/university/Polytechnique?page=1&rpp=50} : Les cours de polytech couvrent un large spectre des maths du lycée. Pour autant, le rythme est assez speed et c'est vraiment du bachotage bête et méchant... Mais surtout, il se sert assez souvent de méthodes et astuces de matheux un peu finaud mais pas forcément simple à retenir... et le niveau est un cran au dessus de ce qui t'es demandé ici.
+\item \url{https://www.fun-mooc.fr/courses/course-v1:UCA+107001+session01/about} : Pour autant, si on te demande d'avoir des connaissances de base en informatiques, et le plus souvent c'est en python, ce mooc là fait plutôt bien l'affaire.
+\end{itemize}
+
+\newpage
+
+
+\section{exercice 7}
+
+\subsection{$1. - f(x) = 5x^2 +3x + 1$}
+
+\begin{enumerate}
+\item[1a.] Résoudre $5x^2 +3x + 1 = 0$\\
+  calcul du discriminant :
+  \begin{eqnarray*}
+    \Delta &=& 3^2 - 4*5*1\\
+    &=& 9 - 20\\
+    &=& -11
+  \end{eqnarray*}
+  Comme $\Delta < 0$, l'équation $f(x) =0 $ n'a pas de solution.
+
+\item[1b.] La fonction $f$ ne s'annule pas et donc change pas de signe. Elle est du signe de $a=5$, donc $f$ est positive sur \degree.
+
+\item[1c.] Comme $a=5$, la fonction $f$ est décroissante jusqu'à $\dfrac{-b}{2a} = \dfrac{-3}{10}$ puis croissante.\\
+
+  \begin{multicols}{2}
+    \begin{eqnarray*}
+      f(-2) &=& 5 \times (-2)^2 + 3 \times (-2) + 1 \\
+      f(-2) &=& 5 \times 4 - 6 + 1 \\
+      f(-2) &=& 15
+    \end{eqnarray*}
+
+    \begin{eqnarray*}
+      f(4) &=& 5 \times (4)^2 + 3 \times (4) + 1 \\
+      f(4) &=& 5 \times 16 + 12 + 1 \\
+      f(4) &=& 93
+    \end{eqnarray*}
+
+    \begin{eqnarray*}
+      f(\dfrac{-3}{10}) &=& 5 \times (\dfrac{-3}{10})^2 + 3 \times (\dfrac{-3}{10}) + 1 \\
+      f(\dfrac{-3}{10}) &=& 5 \times \dfrac{9}{100} - \dfrac{9}{10} + 1 \\
+      f(\dfrac{-3}{10}) &=& \dfrac{45}{100} - \dfrac{9}{10} + 1 \\
+      f(\dfrac{-3}{10}) &=& \dfrac{45}{100} - \dfrac{90}{100} + \dfrac{100}{100} \\
+      f(\dfrac{-3}{10}) &=& \dfrac{55}{100}
+    \end{eqnarray*}
+  \end{multicols}
+
+  Tableau\\
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-2$, $\dfrac{-3}{10}$, $4$}
+    \tkzTabVar{+/ $15$, -/ $\dfrac{55}{100}$, +/ $93$}
+  \end{tikzpicture}
+
+\item[1d.] 
+
+  La valeur minimale de $f$ sur l'intervale $[-2, 4]$ est atteinte en $\dfrac{-3}{10}$ et vaut $\dfrac{55}{100}$.
+
+  La valeur maximale de $f$ sur l'intervale $[-2, 4]$ est atteinte en 4 et vaut 93.
+
+\end{enumerate}
+
+\newpage
+
+\subsection{$2. - f(x) = -3x^2 + 4x + 4$}
+
+\begin{enumerate}
+
+\item[2a.] Résoudre $-3x^2 + 4x + 4 = 0$\\
+  calcul du discriminant :
+
+  \begin{eqnarray*}
+    \Delta &=& 4^2 - 4*(-3)*4\\
+    &=& 16 + 48\\
+    &=& 64 \\
+    &=& 8^2
+  \end{eqnarray*}
+
+
+  Comme $\Delta > 0$, l'équation $f(x) =0 $ a deux solutions.
+
+  \begin{multicols}{2}
+    \begin{eqnarray*}
+      x_1 &=& \dfrac{-4 - \sqrt{64}}{-6} \\
+      &=& \dfrac{-4 - 8}{-6} \\
+      &=& 2
+    \end{eqnarray*}
+
+    \begin{eqnarray*}
+      x_2 &=& \dfrac{-4 + \sqrt{64}}{-6} \\
+      &=& \dfrac{-4 + 8}{-6} \\
+      &=& \dfrac{-2}{3}
+    \end{eqnarray*}
+  \end{multicols}
+
+\item[2b.] Comme $a=-3$, $f$ est croissante puis décroissante. Elle commence en étant du signe de $a$.
+  (parenthèse : Ici, c'est un peu une question de merde pour moi. La justification n'a pas vraiment de sens. C'est un peu du cours / mais du cours pas franchement démontré.)
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 1}{$-\infty$, $\dfrac{-2}{3}$, 2, $+\infty$}
+    \tkzTabLine{,-, z, +, z, -,}
+  \end{tikzpicture}
+
+\item[2c.] À partir du tableau de signe, $f(x) \geq 0$ pour $x \in \left[ \dfrac{-2}{3} ; 2 \right]$.
+
+\item[2d.] On sait que $f(x) = 0$ pour $x_1 = 2$. Je choisis $(x-2)$ comme facteur, puis je développe $(x-2)(ax + b)$.
+
+  \begin{eqnarray*}  
+    (x-2)(ax + b) &=& ax^2 + bx -2ax -2b \\
+    &=& ax^2 + x(b-2a) -2b
+  \end{eqnarray*}
+
+  J'identifie avec $f(x) = -3x^2 + 4x + 4$ \\
+
+  \begin{multicols}{2}
+    \begin{eqnarray*}  
+      a &=& -3 \\
+    \end{eqnarray*} 
+
+    \begin{eqnarray*}  
+      -2b &=& 4 \\
+      b &=& -2
+    \end{eqnarray*} 
+  \end{multicols}
+
+  La fonction s'écrit sous forme factorisée : $f(x) = (x-2)(-3x - 2)$
+
+\item[2d'.] J'aurai pu aller plus vite.
+  On sait que $f(x) = 0$ pour $x_1 = 2$ et $x_2 = \frac{-2}{3}$. De plus $a = -3$.
+  
+  La fonction s'écrit sous forme factorisée : $f(x) = -3(x-2)(x + \frac{2}{3})$
+
+  \newpage
+\item[2e.] Comme $a=-3$, la fonction $f$ est croissante jusqu'à $\dfrac{-b}{2a}$ puis décroissante.\\
+
+  \begin{multicols}{2}
+    \begin{eqnarray*}
+      \dfrac{-b}{2a} &=& \dfrac{-4}{2 \times (-3)} \\
+      &=& \dfrac{-4}{-6} \\
+      &=& \dfrac{2}{3}
+    \end{eqnarray*}
+
+    Comme $1 > \dfrac{2}{3}$, $f$ est décroissante sur $[1 ; 3]$.
+
+    \begin{eqnarray*}
+      f(1) &=& -3 \times 1^2 + 4 \times 1 + 4 \\
+      f(1) &=& -3 + 4 + 4 \\
+      f(1) &=& 5
+    \end{eqnarray*}
+
+    \begin{eqnarray*}
+      f(3) &=& -3 \times 3^2 + 4 \times 3 + 4 \\
+      f(3) &=& -27 + 12 + 4 \\
+      f(3) &=& -11
+    \end{eqnarray*}
+
+  \end{multicols} 
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$1$, $3$}
+    \tkzTabVar{+/ $5$, -/ $-11$}
+  \end{tikzpicture}
+
+\item[1f.] 
+
+  La valeur minimale de $f$ sur l'intervale $[1 ; 3]$ est atteinte en $3$ et vaut $-11$.
+
+  La valeur maximale de $f$ sur l'intervale $[1 ; 3]$ est atteinte en $1$ et vaut $5$.
+
+\end{enumerate}
+
+\newpage
+
+\subsection{$3. - f(x) = 4x^2 - 4x + 1$}
+
+\begin{enumerate}
+
+\item[3a.] Résoudre $4x^2 - 4x + 1$\\
+  calcul du discriminant :
+  \begin{eqnarray*}
+    \Delta &=& (-4)^2 - 4*4*1\\
+    &=& 16 - 16\\
+    &=& 0
+  \end{eqnarray*}
+  Comme $\Delta = 0$, l'équation $f(x) =0 $ admet un solution double en $\dfrac{-b}{2a}$
+
+  \begin{eqnarray*}  
+    \dfrac{-b}{2a} &=& \dfrac{4}{2 \times 4} \\
+    &=& \dfrac{1}{2}
+  \end{eqnarray*} 
+
+  L'équation $f(x) = 0$ admet une solution double en $x = \dfrac{1}{2}$.
+
+\item[3b.] Comme le disciminant est nul, $f$ est du signe de $a=4$ donc positif. $f$ est nulle en $\dfrac{1}{2}$
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 1}{$-\infty$, $\dfrac{1}{2}$, $+\infty$}
+    \tkzTabLine{,+, z, +, }
+  \end{tikzpicture}
+
+\item[3c.] $\dfrac{1}{2}$ est une racine double et $a=4$. La fonction s'écrit sous forme factorisée : $f(x) = 4 \left( x-\dfrac{1}{2} \right)^2$
+
+\end{enumerate}
+
+\newpage
+\subsection{$4. - f(x) = x^2 - 7x + 3$}
+
+\begin{enumerate}
+
+\item[4a.]
+  calcul du discriminant :
+  \begin{eqnarray*}
+    \Delta &=& (-7)^2 - 4*1*3\\
+    &=& 49 - 12\\
+    &=& 37
+  \end{eqnarray*}
+
+  Comme $\Delta > 0$, l'équation $f(x) =0 $ admet deux solutions.
+
+  \begin{eqnarray*}
+    x_1 &=& \dfrac{7 - \sqrt{37}}{2} \\
+    x_2 &=& \dfrac{7 + \sqrt{37}}{2}
+  \end{eqnarray*}
+
+  (ici, on ne va surtout pas chercher à simplifier car $\sqrt{37}$ ne mène nulle part, après si on a une calculatrice, c'est intéressant de calculer les valeurs approchées. ici $x_1 \approx 0.45$ et $x_2 \approx 6.5$ )
+
+\item[4b.] Comme $a = 1$, la fonction $f$ est décroissante jusqu'à $\dfrac{-b}{2a}$ puis croissante.\\
+
+  On calcule $f(0)$, $f(5)$ et $f(\frac{-b}{2a})$.
+
+  \begin{multicols}{2}
+    \begin{eqnarray*}
+      \frac{-b}{2a} &=& \frac{7}{2} \\
+      f(\frac{7}{2}) &=& (\frac{7}{2})^2 -7 \times (\frac{7}{2}) + 3 \\
+      f(\frac{7}{2}) &=& \frac{49}{4} - \frac{49}{2} + 3 \\
+      f(\frac{7}{2}) &=& \frac{49}{4} - \frac{98}{4} + \frac{12}{4} \\
+      f(\frac{7}{2}) &=& \frac{-37}{4}  \\
+      f(\frac{7}{2}) &\approx& -9.25
+    \end{eqnarray*}
+
+    (On peut se rappeler que $\frac{-b}{2a}$, l'extremum de notre parabole est entre les deux racines.)
+
+    \begin{eqnarray*}
+      f(0) &=& 0^2 -7 \times 0 + 3 \\
+      f(0) &=& 3
+    \end{eqnarray*}
+
+    \begin{eqnarray*}
+      f(5) &=& 5^2 -7 \times 5 + 3 \\
+      f(5) &=& 25 - 35 + 3 \\
+      f(5) &=& -7
+    \end{eqnarray*}
+  \end{multicols}
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$0$, $\dfrac{7}{2}$, $5$}
+    \tkzTabVar{+/ $3$, -/ $\dfrac{-37}{4}$, +/ $-7$}
+  \end{tikzpicture}
+
+\item[4b.] À partir du tableau de variation.
+
+  La valeur minimale de $f$ sur l'intervale $[0 ; 5]$ est atteinte en $\dfrac{7}{2}$ et vaut $\dfrac{-37}{4}$.
+
+  La valeur maximale de $f$ sur l'intervale $[0 ; 5]$ est atteinte en $0$ et vaut $3$.
+
+\end{enumerate}
+
+\newpage
+\section{Exercice 8}
+
+\begin{enumerate}
+
+\item[1.]
+  ($(x^n)' = n \times x^{n-1} $)
+
+  \begin{eqnarray*}
+    f(x)  &=& 3x^2 - 5x + 2 \\
+    f'(x) &=& 3 \times 2 \times x - 5 \\
+    f'(x) &=& 6x - 5
+  \end{eqnarray*}
+  
+\item[2.]
+  
+  \begin{eqnarray*}
+    f(x)  &=& x^3 - 3x + 1 \\
+    f'(x) &=& 3 x^2 - 3
+  \end{eqnarray*}
+  
+\item[3.]
+  (du type ( $\frac{1}{v})' = -\frac{v'}{v^2}$ )
+  
+  \begin{eqnarray*}
+    f(x)  &=& \dfrac{1}{2x + 1} \\
+    f'(x) &=& -\dfrac{2}{(2x + 1)^2}
+  \end{eqnarray*}
+  
+
+  
+\item[4.]
+  (du type ( $\frac{u}{v})' = \frac{u'v-v'u}{v^2}$ )
+  
+  \begin{eqnarray*}
+    f(x)  &=& \dfrac{3x - 1}{6x - 7} \\
+    \text{on a } u = 3x - 1 \text{ donc } u'= 3\\
+    \text{et on a } v = 6x - 7 \text{ donc } v'= 6\\
+    f'(x) &=& \dfrac{3 \times (6x - 7) - 6 \times (3x - 1)}{(6x-7)^2}\\
+    f'(x) &=& \dfrac{(18x - 21) - (18x - 6)}{(6x-7)^2}\\
+    f'(x) &=& \dfrac{18x - 21 - 18x + 6}{(6x-7)^2}\\
+    f'(x) &=& \dfrac{-15}{(6x-7)^2}\\
+  \end{eqnarray*}
+
+\end{enumerate}
+
+\newpage
+
+\section{Exercice 9}
+(Je ne peux pas faire les question 1, je n'ai pas l'énoncé)
+
+\begin{enumerate}
+
+\item[2b.] 
+  \begin{eqnarray*}
+    g(x)  &=& 20 + \dfrac{16000}{x} \\
+    g'(x) &=& -\dfrac{16000}{x^2}
+  \end{eqnarray*}
+  
+\item[2c.] Sur l'intervale $[1 ; 1500]$, $x^2 > 0$ donc $g'(x) < 0$
+  
+\item[2d.]
+
+  \begin{eqnarray*}
+    g(1) &=& 20 + 16000\\
+    g(1) &=& 16020
+  \end{eqnarray*}
+
+
+  \begin{eqnarray*}
+    g(1500) &=& 20 + \dfrac{16000}{1500}\\
+    g(1500) &=& 20 + \dfrac{160}{15}\\
+    g(1500) &=& 20 + \dfrac{32}{3}\\
+    g(1500) &=& \dfrac{60}{3} + \dfrac{32}{3}\\
+    g(1500) &=& \dfrac{92}{3}\\
+    g(1500) &\approx& 30.6
+  \end{eqnarray*}
+
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $g'(x)$ / 1, $g$ / 2}{$1$, $1500$}
+    \tkzTabLine{,-, }
+    \tkzTabVar{+/ $16020$, -/ $\dfrac{92}{3}$}
+  \end{tikzpicture}
+
+\end{enumerate} 
+\end{document}
