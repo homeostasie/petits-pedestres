@@ -19,8 +19,8 @@
 
 * **1 - Calcul de PI par répétitions** : **Python / C**. Calcul de PI par chaine de Markov.
 * **2 - Jeu de la vie** : **C++**. Le jeu de la vie imaginé par John Horton Conway en 1970 est un automate cellulaire.
-* **3 - Mooc : Differential equations in action** : **Python**.
-Les deux premières parties : Houston we have a problem & Houston we have a solution.
+* **3 - Mooc : Differential equations in action** : **Python**. Les deux premières parties : Houston we have a problem & Houston we have a solution.
+* **4 - Project Euler ** : **Python**. Les 10 premiers problèmes du project Euler.
 
 ## 2015
 
