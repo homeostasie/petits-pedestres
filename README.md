@@ -52,11 +52,11 @@ Questions de maths suite à des discussions
 
 ### 2 - Max
 
-**c++** : Vector - *2017*
+* **c++** : Vector - *2017*
 
 ### 3 - Discord Mathmématiques 
 
-**Latex** : Équation avec racine carré - *2018*
+* **Latex** : Équation avec racine carré - *2018*
 
 
 ## Contributeur
