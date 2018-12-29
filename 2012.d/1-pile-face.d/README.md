@@ -1,0 +1,3 @@
+## Pile ou Face
+
+Une pièce avec deux côtés : Pile et Face est lancée en l'air par un lanceur et retombe sur une de ses deux faces. L'adversaire doit deviner la face sur laquelle va tomber une pièce. Pour pimenter un peu le jeu, on permet au lanceur d’allègrement tricher en choisissant de son plein grès la face sur laquelle la pièce va tomber. Ce résultat est intégrée dans un fichier composé de ligne avec soit 0 pour pile ou soit 1 pour face. L'adversaire découvre alors en jouant le résultat de chaque partie. Il lui revient alors la possibilité, que dis-je la nécessité de s'adapter à son adversaire pour tenter de gagner le plus de partie possible.

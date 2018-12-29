@@ -1,0 +1,16 @@
+THOMAS LAFOND - 1060408
+Compte rendu - TP1 - Approximation au sens de Tchebycheff
+
+Descriptif des fichiers
+Intervalle.sci crée les deux intervalles X_n de n+2 points et X_fin qui est utilisé comme grain fin pour rechercher de manière précise sur la fonction. De même la fonction qui permute le premier et le dernier membre de la chaine utilisé sur Remez sont aussi présente avec un paramètre égale à 1 ou -1 selon le choix.
+fon_tp.sci crée les fonctions utilisés lors du tp
+tcheby.sci répond à la première question du tp avec en autre la création de la matrice de Vandermonde : Vander et la résolution de l'équation avec l'utilisation de la fonction lsq. On crée également le polynome de Tchebycheff à partir de sa matrice. Pour un code plus simple pour l'algorithme de Remez on crée également une fonction qui fait f-p : fmoinsp
+remez.sci calcul le x" : Cprime 
+algofin_remez.sci applique l'algorithme de Remez sur la chaine X_n et la fonction fmoinsp. On utilise un paramètre l=0 et un test très simple l==0 pour vérifier que la chaine ne subit pas plusieurs modification en un seule passage d'algorihme.
+
+main.sci est le fichier main à exécuter. Il comprend un x_choose assez simple qui permet de lancer l'animation des fonctions demandé. Néanmoins un problème dans l'algorithme ne permet pas de se servir du calcul de l'erreur pour la boucle... On execute nos fonctions avec exec('***.sci') sans oublier pour autant de lancer les fonctions pour incrémenter les valeurs recherchées.
+
+
+
+
+

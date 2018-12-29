@@ -1,0 +1,510 @@
+\documentclass{report}
+
+\usepackage[latin1]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyfoot[LE,RO]{\textit{Étude d'un chantier routier}}
+\fancyfoot[RE,LO]{\textit{M2-SITN T.LAFOND}}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+
+\usepackage[top=1cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry} 
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\begin{document}
+\nocite{*}
+\title{Étude d'un chantier routier}
+\author{LAFOND THOMAS}
+\date{06/02/2012}
+\maketitle
+\begin{abstract}
+  Dans ce rapport nous allons étudier la faisabilité d'un chantier routier. Cette étude se fera en trois parties avec en premier lieu une estimation du trafic actuel, en second lieu une recherche d'optimisation des feux de travaux et de la longueur du chantier et enfin dans un dernier temps une étude de la file d'attente. Pour cela, processus de Poissons, chaîne de Markov et autre "stochasticité" seront de la partie.
+\end{abstract}
+
+% Les commandes de sectionnement (\chapter, \section, \subsection, \etc.)
+% sont automatiquement numérotés, et permettent de produire facilement
+% une table des matières au moyen de :
+\tableofcontents
+\newpage
+
+\chapter{Introduction}
+\section{Licence}
+Cette étude a été proposée à l'Université des Sciences et Technologies de Lille - UFR de Mathématiques Pures et Appliquées en Agrégation - modélisation en 2005 - 2006 par Daniel Flipo. Elle est disponible sous licence CC BY-NC-SA 2.0..
+\section{Problématique}
+Une entreprise de travaux publics a pour charge de réparer une route. Cette dernière en double sens, possède une seule et unique voie de circulation sur chaque côté. L'entreprise souhaite réparer au plus vite le tronçon de cette route tout en minimisant la gêne occasionnée pour les automobilistes et les autres  utilisateurs. La technique préconisée et qui sera utilisée revient à couper alternativement une partie de la voie pour y réaliser les travaux tout en permettant aux automobilistes de circuler sur l'autre voie par l'intermédiaire d'un feu alterné. Le but est de réussir à maximiser cette distance de travaux pour espérer réparer de plus grands tronçons possibles à chaque fois et donc passer le moins de temps possible sur l'ensemble chantier en limitant l'installation et la désinstallation de toute la logistique à chaque changement de tronçon. Dans cette optique on cherche à optimiser la durée des feux verts et des deux rouges de chaque côté pour minimiser le désagrément infligé aux conducteurs en essayant de réduire au minimum leur temps d'attente au feu rouge.
+\section{Modèle}
+On modélise la présence de véhicule, son passage en une borne repère par un processus de comptage et plus particulièrement un processus de Poisson. Les véhicules roulent à une vitesse constante du début à la fin du tronçon. En l'absence d'obstacle ou de feu rouge, leurs vitesses reste ainsi la même sur l'intégralité du trajet. Ni elles ne s'éloignent, ni elles ne s'approchent les unes des autres. Lorsque un véhicule est arrêté à un feu, il met un certain temps "a" pour démarrer, sa vitesse initiale étant sa vitesse de croisière. La moyenne des véhicules par minutes est spécifiques à chaque voie mais reste constant durant la journée. Si la modélisation d'un flot de véhicules dans de tel condition peut paraître absurde, il ne faut pas perdre de vue que cette étude est plus portée sur le comptage des voitures que sur la modélisation du flux de voitures.
+\newpage
+
+\chapter{Estimation du trafic}
+Dans un premier temps, l'entrepreneur a besoin de se faire une idée de la circulation sur les deux voies avant même de pouvoir espérer commencer les travaux. Il cherche alors à estimer l'intensité du trafic dans les deux sens. On souhaite compter au mieux les véhicules qui passent sur cette route tout en prenant en compte différents paramètres comme l'intervalle de temps entre deux véhicules consécutifs. On modélise l'arrivée d'une voiture sur le tronçon qu'on souhaite réparer par un  processus de Poisson. On prend l'évènement : la voiture passe devant la borne du début du futur chantier comme une file d'attente avec résolution immédiate. Les deux voies possèdent chacune un paramètre $\lambda$ qui leur est propre. $\lambda$ caractérise la loi de Poisson modélisant l'arrivée des voitures. 
+
+\section{Théorie}
+Beaucoup de notion de probabilité ont été abordé dans cette introduction. Pour espérer continuer sereinement, il est nécessaire de les définir.
+\begin{definition}
+Processus de comptage\newline
+Un processus de comptage noté N(t) vérifie trois propriétés :
+\begin{itemize}\itemsep4pt
+\item Pour t $\geq$ 0 le nombre N(t) est à valeur entières positives.
+\item La fonction t $\longrightarrow$ N(t) est croissante.
+\item Pour tout couple (a,b) (0 < a < b), la différence N(b) - N(a) représente le nombre de << tops >> se produisant dans l'intervalle de temps ]a, b]. Dans notre cas un top est le passage d'une voiture.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Processus de Poisson\newline
+Un processus de comptage noté N(t) est un processus de Poisson de densité $\lambda$ si et seulement si il vérifie les trois propriétés suivantes :
+\begin{itemize}\itemsep4pt
+\item N(0) = 0
+\item Le processus est à accroissement indépendant. Les nombres de << tops >> se produisant dans des intervalles de temps disjoints est sont indépendants.
+\item Le nombre de << tops >> se produisant dans un intervalle de temps de longueur t $\geq$ 0 suit la loi de Poisson de paramètre $\lambda t$, c'est-à-dire, pour tout s $\geq$ 0 et pour tout t $\geq$ 0, on a pour n $\geq$ 0:
+$$P[N(s+t) - N(s) = n] = e^{- \lambda t}\frac{\lambda t^{n}}{n!}$$ 
+\end{itemize}
+\end{definition}
+
+\newpage
+\section{Pratique}
+\begin{center}
+Comment estimer au mieux l'intensité du trafic à partir de donnée expérimentales?
+\end{center}
+
+Par hypothèse, le flot de véhicules est modélisé par un processus de Poisson. On connait deux caractérisations d'un processus de Poisson de paramètre $\lambda$ :
+\newline
+\begin{itemize}\itemsep4pt
+\item Soit à partir des instants $(Ti) _{i \in N*}$ de sauts ici les arrivées de voitures, en disant que la suite des $\tau_{i} = T_{i} - T_{i-1}$ des intervalles entre deux sauts consécutifs est une suite de  variables aléatoires indépendantes de même loi exponentielle de paramètre $\lambda s$.
+
+\item Soit à partir de sa fonction de comptage $N(t) = \sum 1_{0<T_{i}\leq t}$ ici le nombre de véhicules arrivés entre les instants 0 exclu et t inclus en disant que N(t) est à accroissements indépendants et que pour tout couple (t,s) de réels $N(t \geq 0, s>0 )$ l'accroissement N(t + s)  - N(t) suit une loi de Poisson de paramètre $\lambda s$.
+\end{itemize}
+
+On peut recueillir deux sortes de statistique sur le terrain :\newline
+
+\begin{itemize}\itemsep4pt
+\item relever les intervalles de temps séparant les passages de deux véhicules consécutifs. Ces données nous permettent d'utiliser la première caractérisation.
+\item compter à intervalles réguliers (une minute par exemple) le nombre de véhicules qui passent dans l'intervalle. Ces données nous permettent d'utiliser la deuxième caractérisation.
+\end{itemize}
+
+Les deux démarches sont relativement différentes, dans la première on prend une mesure de temps : la différence de temps entre deux véhicules consécutifs alors que dans le second on réalise un comptage de voiture en fonction d'un laps de temps arbitraire.
+\newline
+
+\begin{itemize}\itemsep4pt
+\item On peut assez facilement créer un échantillon de temps $T_{i}$ à l'aide de la fonction R qui simule un échantillon de loi exponentielle. Cette échantillon simule le temps séparant l'arrivée de deux voitures consécutives. On a juste alors à récupérer la somme cumulative deux à deux pour fabriquer notre échantillon $\tau _{i}$. On peut également estimer le paramètre $\lambda$ en cherchant l'inverse de la moyenne de l'échantillon $T{i}$.
+\item Dans le deuxième cas, on simule un échantillon suivant une loi de Poisson $\lambda s $. En comptant le nombre de voiture dans un << petit >> intervalle de temps, on peut dès lors reconstituer l'échantillon initial en faisant néanmoins une approximation sur le comptage alors réaliser non pas par voiture mais par unité de temps.
+\end{itemize}
+
+On remarque assez simplement que la première méthode est bien plus commode. D'un point de vue humain, elle est moins assujetti aux erreurs et d'un point de vu pratique, elle nécessite moins de voiture et donc moins de temps pour être mise en place et espérer avoir un estimateur correct. Néanmoins d'un point de vu statistique, son biais est légèrement plus élevé.
+\
+
+\newpage
+\section{Graphe}
+En utilisant les deux méthodes précédentes, on peut recueillir des échantillons significatifs modélisant notre problème. On peut alors modéliser les véhicules sur notre tronçon à différents instants successifs. Les deux graphiques du haut représente les temps d'inter-arrivées. Les quatre autres représentent le nombre de véhicules passant par la borne (le point de comptage) pendant un certain laps de temps.
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{1-1tempspassage.jpg}
+\caption{Flux de véhicule}
+\end{center}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{1-2trafic.jpg}
+\caption{Tronçon}
+\end{center}
+\end{figure}
+\newpage
+
+\chapter{Condition de non-engorgement}
+Une fois les paramètres $\lambda_{1}$ et $\lambda_{2}$ estimés et donc fixés pour le reste de notre problème, l'entreprise commence à réfléchir à l'impact d'un feu tricolore. En effet, pendant qu'une partie d'une voie est en travaux et donc interdit à la circulation, les véhicules sont obligés de ce partager alternativement une seule et même voie. Alors qu'elle souhaite optimiser la taille des travaux et donc la longueur de la portion bloqué, une contrainte de temps s'impose naturellement. Il s'agit alors de bien régler la temporisation des feux en fonction de la vitesse : v (constante dans notre modèle), la taille du tronçon coupé L, la fréquence des voitures, le temps nécessaire pour une voiture pour démarrer : a , la durée des feux rouge et vert pour qu'il n'y ait pas d'engorgement.
+\section{Théorie}
+Beaucoup de paramètre parsèment cette étude.
+\begin{itemize}\itemsep3pt
+\item a : Temps qu'a besoin un véhicule pour démarrer
+\item v : Vitesse constante de déplacement des véhicules
+\item L : Longueur du chantier
+\item $d_{1}$ : Durée du feu vert pour la voie 1
+\item $d_{2}$ : Durée du feu vert pour la voie 2
+\item K : Nombre de véhicules qu'on souhaite faire passer dans un sens à chaque cycle.
+\item $\lambda_{1}$ = Moyenne des véhicules sur la voie 1.
+\item $\lambda_{2}$ = Moyenne des véhicules sur la voie 2.
+\end{itemize}
+On cherche à démontrer une condition de non-engorgement :
+
+$$d_{1} \geq a \lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$d_{2} \geq a \lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+\newpage
+Pour comprendre cette condition, il faut partir avec une vision globale du problème en réalisant un cycle entier.
+\newline
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route-feu1.jpg}
+\caption{Feu vert voie 1}
+\end{center}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route-feu2.jpg}
+\caption{Feu vert voie 2}
+\end{center}
+\end{figure}
+On cherche à caractériser le temps totale d'un cycle. La première chose que l'on note est que lorsque les deux feux sont rouges, il faut laisser un certain temps pour que les véhiculess engagés sur la voie puissent la traverser en entier. Le chantier étant de longueur L et la vitesse des véhicules étant v. On obtient un temps pour sortir de la voie de L/v et ce une fois de chaque côté. On obtient alors la durée totale du temps d'un cycle. 
+$$\Delta t = d_{1} + d_{2} + 2L/v$$
+Le nombre de voitures arrivant au feu que ce soit pour passer ou bien pour s'arrêter est connu en moyenne. En effet, on sait qu'il arrive $\lambda_{1}$ et $\lambda_{2}$ véhicules par unité de temps. Le nombre de véhicules par cycle s'accumulant au feu est donc donnée par le produit. 
+$$\lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$\lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+Mais on sait que les véhicules ne peuvent passer que pendant que le feu est vert de leur côté et ce nombre est bridé par la vitesse de démarrage des voitures : a. Donc, si on veut que tous les véhicules présents puissent passer au vert, il faut remettre à zéro le compteur, soit le nombre de voitures présentes aux feux.
+$$d_{1}/a \geq \lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$d_{2}/a \geq \lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+On obtient bien les deux inégalités.
+$$d_{1} \geq a \lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$d_{2} \geq a \lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+\newpage
+\section{Pratique}
+\begin{center}
+Comment optimiser les différents paramètres donnés?
+\end{center}
+
+Dans cette partie, on estime connu les paramètres suivants. On les transpose tous à la même échelle.
+\begin{itemize}\itemsep3pt
+\item a = 4 secondes  = 4/60 minutes: Temps qu'a besoin un véhicule pour démarrer
+\item v = 30 km / h = 0.5 m / min: Vitesse constante de déplacement des véhicules
+\item $\lambda_{1}$ = 4 : Moyenne des véhicules sur la voie 1.
+\item $\lambda_{2}$ = 3 : Moyenne des véhicules sur la voie 2.
+\end{itemize}
+On cherche à estimer une bonne longueur de L.
+$$\Delta t \leq 5$$
+$$d_{1} + d_{2} + 2L/v \leq 5$$
+$$a \lambda_{1} ( d_{1} + d_{2} + 2L/v) + a \lambda_{2} ( d_{1} + d_{2} + 2L/v) + 2L/v \leq 5$$
+$$a ( \lambda_{1} + \lambda_{2} ) ( d_{1} + d_{2} + 2L/v) + 2L/v \leq 5$$
+$$2L/v \leq 5 - a ( \lambda_{1} + \lambda_{2} ) ( d_{1} + d_{2} + 2L/v)$$
+$$L \leq \frac{v}{2}(5 - a ( \lambda_{1} + \lambda_{2} ) ( d_{1} + d_{2} + 2L/v))$$
+$$L \leq 667 m$$
+Le but de l'entreprise étant de maximiser L sans pour autant perturber le trafic, on pourrait prendre L = 667 mètres, néanmoins pour une question de commodité, L = 600m dans le reste du projet.
+\newline
+On cherche maintenant à connaître $d_{1}$ et $d_{2}$.
+$$d_{1} + d_{2} + 2L/v = 5min$$
+
+$$d_{1} \geq a \lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$d_{2} \geq a \lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+
+On passe au numérique : 
+$$d_{1} \geq 4/60 * 4 * 5 = 1.3333$$
+$$d_{2} \geq 4/60 * 3 * 5 = 1$$
+$$d_{1} + d_{2} = 5 - 2*0.6/0.5 = 2.6$$
+
+Une infinité de choix s'offre à nous pour paramétrer $d_{1}$ et $d_{2}$. Il est néanmoins commode de choisir des nombres avec des décimales simples comme par exemple : $d_{1}$ = 1.4 minute et $d_{2}$ = 1.2 minute où bien $d_{1}$ = 1.5 minute et $d_{2}$ = 1.1 minute.
+\newpage
+\chapter{Étude de la longueur de la file de véhicules}
+Pour ce chapitre, nous allons nous concentrer sur la longueur de la file de véhicules arrêtés à un feu. La file arrêtée de l'autre feu jouant un rôle symétrique mais avec seulement un paramètre  différent peut être vu de la même manière. On note $X_{n}$ le nombre de véhicules en attente quand le feu passe au vert pour eux. On établit une relation entre $X_{n}$ et $X_{n+1}$ avec n un cycle comme suit :
+$$X_{n+1} = (X_{n} + Y_{n} - K)^{+} + Z_{n}$$
+
+\begin{itemize}\itemsep4pt
+\item $(Y_{n})$ est une suite de variable aléatoire de même loi de Poisson de paramètre $\lambda_{1} d_{1}$.
+\item $(Z_{n})$ est une suite de variable aléatoire de même loi de Poisson de paramètre $\lambda_{1} (d_{2} + 2L/v)$.
+\item K le nombre maximum de voitures qui peuvent passer durant la durée du feu vert.
+\end{itemize}
+\section{Modèle}
+Ce modèle est assez intuitif. Pour la voie une, la durée du feu rouge est de $d_{2}$ + 2 L/v. Il arrive donc en moyenne $\lambda1$ ($d_{2}$ + 2 L/v) nouvelles voitures qui vont venir s'agglutiner dans la file d'attente. 
+\newline
+Ensuite, il intervient le max entre 0 et $X_{n}$ + $Y_{n}$ - K. Cela signifie que soit toutes les voitures ont pu passer lors du feu vert précédent et donc $X_{n+1} = Z_{n}$ : Seuls les véhicules qui arriveront lors du feu rouge seront arrêtés. Soit $X_{n+1} = X_{n} + Y_{n} - K + Z_{n}$ et alors on sait que K véhicules sont passés au feu vert mais qu'il y avait déjà $X_{n}$ véhicules déjà présents lors du dernier cycle et qu'en plus $Y_{n}$ véhicules sont arrivés à se rajouter dans la file alors que le feu était vert. 
+\newline
+On a là un modèle assez réaliste et crédible. On note bien la présence d'une arrivée continue de véhicules, de la notion de mémoire du cycle précédent et d'un dés-engorgement possible avec la soustraction de K. 
+\newline
+$X_{n}$ est une chaîne de Markov avec une infinité dénombrable d'état. La chaîne est irréductible et les états sont tous récurrents positifs. Il existe donc une loi stationnaire. Pour autant son calcul explicite n'est pas envisageable.
+\section{Théorie}
+\begin{definition}
+Chaîne de Markov\newline
+Une chaîne de Markov est un processus sans mémoire, non héréditaire. Dans l'évolution au cours du temps, l'état du processus à l'instant (n+1) ne dépend que de celui à l'instant n précédent et non de ses états antérieurs.
+\end{definition}
+
+\begin{definition}
+Probabilité stationnaire\newline
+Supposons que la chaîne est irréductible, récurrent positif et possède un nombre d'état dénombrable (dans notre cas N). Alors il existe une et une seule loi stationnaire $\Pi$
+$$\Pi_{i, j} = \frac{1}{M_{i, j}} = \frac{1}{E^{j}[T_{j}]}$$
+\end{definition}
+\section{Pratique}
+\begin{center}
+Quelle sera la longueur de la file d'attente après un grand temps de travaux.
+\end{center}
+On se propose d'étudier un problème particulier et de modéliser la file d'attente au feu. Pour réaliser cette simulation et obtenir des résultats intéressants sans pour autant dépasser la capacité de notre machine, on va utiliser une méthode connue qui consiste à faire tourner plusieurs simulations plus petites.
+\newline
+On fait une hypothèse sur la composition de la file de véhicules :
+\begin{itemize}\itemsep4pt
+\item 60/100 de voitures d'une longueur de 5m
+\item 30/100 de bus d'une longueur de 10m
+\item 10/100 de camions d'une longueur de 20m
+\end{itemize}
+On réalise N = 5000 Simulations d'une longueur n = 500.
+On s'intéresse en premier lieu au nombre moyen de véhicules arrêtés et à la longueur moyenne de la file d'attente qu'on calcule avec l'aide des pourcentages précédemment cités.
+\begin{center}
+Nombre moyen de véhicules arrêtés = 17 véhicules\newline
+Taille moyenne de la file d'attente = 136.5 m \newline
+\end{center}
+Pour autant la moyenne n'étant pas toujours un très bon estimateur, voici une visualisation de ces valeurs par un box plot et par l'affichage en histogramme de ces fréquences classiques et empiriques
+.\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{longueur-file.jpg}
+\caption{Boxplot}
+\end{center}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{freq.jpg}
+\caption{Histogrammes}
+\end{center}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{freq_empirique.jpg}
+\caption{Fréquences empiriques}
+\end{center}
+\end{figure}
+Dans ce cas pratique, on apprend que l'entrepreneur a signé un cahier des charges fixant à 5/100 la probabilité que la file d'attente dépasse les 235 mètres. Pour vérifier ce point là, on utilise les données expérimentales recueillies et on calcul le nombre de fois où la file d'attente dépasse cette valeur de 235 mètres, en la divisant par le nombre de simulations, on obtient la probabilité de dépasser les 235 mètres. 
+\begin{center}
+Probabilité de dépasser 235 mètre de file d'attente = 0.432
+\end{center}
+Nous sommes en dessous du seuil fixé et donc l'entrepreneur peut signer cette engagement.
+\newpage
+
+\chapter{Conclusion}
+Bien nous a pris de lancer cette simulation, le chantier routier semble réalisable.
+\newline
+Durant toute l'étude de notre chantier routier, nous avons fait bon nombre d'hypothèse. Souvent elle était présente à raison pour simplifier le calcul. Néanmoins, il est bon de savoir que ces dernières ne sont pas toujours réaliste :
+\begin{itemize}\itemsep4pt
+\item D'un point de physique tout d'abord, il est impossible de tenir un tel modèle que cela soit au niveau de la vitesse constante, du temps de démarrage...
+\item D'un point de vue humain, il est bien rare qu'une route garde un même encombrement tout au file de la journée. Il est bien plus courant que cet encombrement augmente dans les périodes dites de pointes 8h-9h et 16h-18h et baisse dans les périodes creuses 10h-11h et 14h-16h. Cela se reflète dans le paramètre des lois de poissons qui alors dépend du temps.
+\end{itemize}
+D'autre modèles existent mais font également d'autres hypothèses. On en trouve notamment un grand nombre d'entre eux au rayon des équations aux dérivées partielles en cherchant à prendre en compte la notion de dilatation et de compression du flot de voiture. S'il semble plus précis sur le papier, il est tout de même une question de pertinence qui ne doit pas être négligé quand le but de la simulation porte en premier lieu sur le comptage des véhicules plus que sur la dynamique de ceux-ci.
+\newpage
+\chapter{Annexe}
+\section{Estimation du trafic}
+\subsection{Estimation des processus de Poisson}
+\begin{verbatim}
+#Simulation des tau : le temps entre l'arrivée de deux voitures
+#n le nombre de voiture compté
+n_1 = 50
+n_2 = 50
+
+
+#lambda_theo_1 le paramètre
+lambda_theo_1 = 0.12
+lambda_theo_2 = 0.13
+
+
+#tau_1 est le fichier récupérer de l'intervalle de temps entre le passage de deux voitures
+tau_1 = rexp(n_1, rate = lambda_theo_1)
+tau_2 = rexp(n_1, rate = lambda_theo_1)
+
+#plot(tau_1,type="b")
+#plot(tau_1,type="s")
+
+#En second
+#En moyenne, il passe une voiture en mean(tau) en seconde
+#tau_1
+#mean(tau_1)
+On peut ainsi récupérer
+lambda_exp_1 = 1/mean(tau_1)
+lambda_exp_2 = 1/mean(tau_2)
+
+
+#
+flux_1 = tau_1
+for(i in 2:n_1)
+{
+	flux_1[i]=flux_1[i-1]+flux_1[i]
+}
+flux_2 = tau_2
+for(i in 2:n_2)
+{
+	flux_2[i]=flux_2[i-1]+flux_2[i]
+}
+
+#Graph
+par(mfrow=c(2,2))
+plot(tau_1,type="s")
+title("Intervalle d'arrivée entre deux voitures sur la voie 1")
+plot(flux_1,seq(1,n_1),type="s")
+title("Temps de passage au point de départ sur la voie 1")
+
+plot(tau_2,type="s")
+title("Intervalle d'arrivée entre deux voitures sur la voie 2")
+plot(flux_2,seq(1,n_2),type="s")
+title("Temps de passage au point de départ sur la voie 2")
+
+#deuxième méthode:
+ #On compte le nombre de voiture dans un intervalle de 30s
+fluxx_1 = rpois(50, lambda=lambda_exp_1*30)
+
+for(i in 2:n_1)
+{
+	fluxx_1[i]=fluxx_1[i-1]+fluxx_1[i]
+}
+
+fluxx_2 = rpois(50, lambda=lambda_exp_2*30)
+for(i in 2:n_1)
+{
+	fluxx_2[i]=fluxx_2[i-1]+fluxx_2[i]
+}
+par(mfrow=c(1,2))
+plot( seq(1,n_2*30,30), fluxx_2,type="s")
+plot( seq(1,n_2*30,30), fluxx_2,type="s")
+
+abs(mean(1/flux_1) - lambda_theo_1)
+abs(mean(1/fluxx_1) - lambda_theo_1)
+
+abs(mean(1/flux_2) - lambda_theo_2)
+abs(mean(1/fluxx_2) - lambda_theo_2)
+\end{verbatim}
+\newpage
+\subsection{Modélisation du tronçon}
+\begin{verbatim}
+rep_flux = matrix(1,nrow = 2, ncol= n_1 + n_2)
+
+rep_flux[2,] = c(rep(-1,n_1), rep(1,n_2))
+rep_flux[1,]= c(-flux_1, flux_2)
+#rep_flux
+
+
+par(mfrow=c(2,2))
+
+plot(rep_flux[1,], rep_flux[2,],type="p")
+title("au temps t = 0")
+abline(v=0, col = 2)
+abline(h=0, col = 4)
+
+rep_flux[1,] = c(-flux_1+60, flux_2-60)
+plot(rep_flux[1,], rep_flux[2,],type="p")
+title("au temps t = t + 60s")
+abline(v=0, col = 2)
+abline(h=0, col = 4)
+
+rep_flux[1,] = c(-flux_1+120, flux_2-120)
+plot(rep_flux[1,], rep_flux[2,],type="p")
+title("au temps t = t + 120s")
+abline(v=0, col = 2)
+abline(h=0, col = 4)
+
+rep_flux[1,] = c(-flux_1+180, flux_2-180)
+plot(rep_flux[1,], rep_flux[2,],type="p")
+title("au temps t = t + 180s")
+abline(v=0, col = 2)
+abline(h=0, col = 4)
+\end{verbatim}
+
+\newpage
+\subsection{Condition de non-engorgement}
+\begin{verbatim}
+lambda_1 = 4
+lambda_2 = 3
+# v = 30 km / heure ~  en m / min
+v = 0.5
+
+#Calcul de L
+v/2 * (5 - 4/60 * 5* (lambda_1 + lambda_2))
+
+L = 0.6
+
+#d1 + d2 = 5minutes - 2L/v
+5 - 2*L / v
+
+#d1 >=
+4/60 * 4 *5 
+
+#d2 >=
+4/60 * 3 * 5
+\end{verbatim}
+
+
+\newpage
+\subsection{Étude de la longueur de la file d'attente}
+\begin{verbatim}
+## Paramètres
+# nombre de simulations
+N=5000;
+#Nombre de cycles
+n=500;#
+a=4/60;
+lambda1= 4;
+lambda2= 3;
+L=.6;
+v=.5;
+d1=1.5;
+d2=1.1;
+
+#Nombre de voitures qui passe au max par feu vert
+K= floor(d1/a);
+
+mu1= lambda1 * d1;
+mu2= lambda1 * (d2+2*L/v);
+
+
+Y = matrix(0,N,n);
+Z = matrix(0,N,n);
+X = matrix(0,N,n);
+
+#Simulation des lois de Poissons
+for (i in 1:n)
+{
+	Y[,i]=rpois(N,mu1);
+	Z[,i]=rpois(N,mu2);
+}
+
+# Nombre de voiture : calcul de Xn
+i=1
+while (i < n)
+{
+	j = 1
+	while (j <= N)
+	{
+		X[j, i+1] = max(0 ,X[j, i]+Y[j, i] - K ) + Z[j, i];
+		j = j +1
+	}
+	i = i +1
+}
+
+# Longueur de file : calcul de XX
+i = 1
+XX = matrix(0,N,1)
+while (i <= N) 
+{
+	XX[i] = mean(X[i, n]) *(0.6*5 + 0.3 *10 + 0.1*20)
+	i = i + 1;
+}
+
+# Nombre de voitures moyen
+moy_long = mean(X[, n])
+# Longeur de file moyenne
+moy_file = moy_long*(0.6*5 + 0.3 *10 + 0.1*20)
+
+
+\end{verbatim}
+\subsection{Graphiques et résultats}
+\begin{verbatim}
+# Affichage des boxplots 
+par(mfrow=c(1,2))
+boxplot(X[,n])
+title("Boxplot du nombre voitures au bout de 500 cycles")
+boxplot(XX)
+title("Boxplot de la longueur de la file au bout de 500 cycles")
+
+# Affichage des histogrammes
+par(mfrow=c(1,2))
+hist(X, freq=TRUE)
+hist(XX)
+
+# file < 235 m
+pval = length(XX[XX>235]) / N
+
+
+# frequences empiriques
+femp = table(X)/(n*N)              
+hist(femp)
+title("Fréquences empiriques")
+\end{verbatim}
+
+
+\end{document}

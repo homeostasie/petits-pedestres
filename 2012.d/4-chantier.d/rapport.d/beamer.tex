@@ -1,0 +1,280 @@
+\documentclass{beamer}
+
+\usetheme{Warsaw}% le thème choisi pour ma présentation. Essayer aussi Warsaw Singapore Pittsburgh Montpellier Malmoe Luebeck Goettingen...
+\usepackage[frenchb]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{epsfig,pslatex,colortbl}
+\usepackage{graphics}
+\usepackage{graphicx}%pour les includegraphics
+\usepackage{array}% pour des tableaux particuliers. Nécessaire pour les révéler colonne par colonne
+%\setbeamercovered{transparent}%l'autre option : invisible, cache totalement le texte pas encore découvert (ie, n'utilise pas le ``grisé'').
+\setbeamercovered{invisible}
+
+\colorlet{orange}{red!70!yellow}% mes petites couleurs que j'aime bien
+\colorlet{mauve}{blue!70!red}
+\colorlet{brouge}{red!70!blue}
+
+\addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+%pour ajouter un numéro de page en bas.
+
+\title[Étude d'un chantier routier]{Étude d'un chantier routier}
+%l'argument entre [] est une version courte du titre, qu'on met en bas des transparents.
+\author{LAFOND Thomas}
+\date{\today}
+\institute{Master SITN - UCBL}
+\AtBeginSection[] % pour mettre la table des matières 
+%                 % au début de chaque section
+{ \begin{frame}<beamer> 
+\frametitle{Outline} 
+\tableofcontents[currentsection] 
+\end{frame} }
+
+\begin{document}
+\begin{frame}\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Plan de l'exposé}
+\tableofcontents% comme en latex normal, met la table des matières
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Schéma~}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route0.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route1.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route2.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route3.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{route4.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modèle~}
+\begin{definition}
+Processus de comptage\newline
+\begin{itemize}\itemsep2pt
+\item Pour t $\geq$ 0 le nombre N(t) est à valeur entières positives.
+\item La fonction t $\longrightarrow$ N(t) est croissante.
+\item Pour tout couple (a,b) (0 < a < b), la différence N(b) - N(a) représente le nombre de << tops >> se produisant dans l'intervalle de temps ]a, b]. Dans notre cas un top est le passage d'une voiture.
+\end{itemize}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{definition}
+Processus de Poisson\newline
+\begin{itemize}\itemsep2pt
+\item N(0) = 0
+\item Le processus est à accroissement indépendant. Les nombres de << tops >> se produisant dans des intervalles de temps disjoints est sont indépendants.
+\item Le nombre de << tops >> se produisant dans un intervalle de temps de longueur t $\geq$ 0 suit la loi de Poisson de paramètre $\lambda t$, c'est-à-dire, pour tout s $\geq$ 0 et pour tout t $\geq$ 0, on a pour n $\geq$ 0:
+$$P[N(s+t) - N(s) = n] = e^{- \lambda t}\frac{\lambda t^{n}}{n!}$$ 
+\end{itemize}
+\end{definition}
+\end{frame}
+
+\section{Estimation du trafic}
+
+\begin{frame}
+\frametitle{Deux caractérisations possibles}
+\begin{itemize}\itemsep4pt
+\item Soit à partir des instants $(Ti) _{i \in N*}$ de sauts, en disant que la suite des $\tau_{i} = T_{i} - T_{i-1}$  est une suite de  variables aléatoires indépendantes de même loi exponentielle de paramètre $\lambda s$.
+\item relever les intervalles de temps séparant les passages de deux véhicules consécutifs. Ces données nous permettent d'utiliser la première caractérisation.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Deux statistiques à relever}
+\begin{itemize}\itemsep4pt
+\item Soit à partir de sa fonction de comptage $N(t) = \sum 1_{0<T_{i}\leq t}$ en disant que N(t) est à accroissements indépendants et que pour tout couple (t,s) de réels $N(t \geq 0, s>0 )$ l'accroissement N(t + s)  - N(t) suit une loi de Poisson de paramètre $\lambda s$.
+\item compter à intervalles réguliers (une minute par exemple) le nombre de véhicules qui passent dans l'intervalle. Ces données nous permettent d'utiliser la deuxième caractérisation.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{estim0.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{estim1.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{estim2.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{estim3.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{estim4.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\section{Condition de non-engorgement}
+
+\begin{frame}
+\begin{itemize}\itemsep3pt
+\item a : Temps qu'a besoin un véhicule pour démarrer
+\item v : Vitesse constante de déplacement des véhicules
+\item L : Longueur du chantier
+\item $d_{1}$ : Durée du feu vert pour la voie 1
+\item $d_{2}$ : Durée du feu vert pour la voie 2
+\item K : Nombre de véhicule qu'on souhaite faire passer dans un sens à chaque cycle.
+\item $\lambda_{1}$ = Moyenne des véhicules sur la voie 1.
+\item $\lambda_{2}$ = Moyenne des véhicules sur la voie 2.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{feu1.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{feu2.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{feu3.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{feu4.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Il faut que d $\geq$ aK pour faire passer au moins K véhicule. 
+$$d_{1} \geq a \lambda_{1} ( d_{1} + d_{2} + 2L/v)$$
+$$d_{2} \geq a \lambda_{2} ( d_{1} + d_{2} + 2L/v)$$
+\end{frame}
+
+
+\begin{frame}
+\begin{itemize}\itemsep3pt
+\item a = 4 secondes  = 4/60 minutes: Temps qu'a besoin un véhicule pour démarrer
+\item v = 30 km / h = 0.5 m / min: Vitesse constante de déplacement des véhicules
+\item $\lambda_{1}$ = 4 = 4 : Moyenne des véhicules sur la voie 1.
+\item $\lambda_{2}$ = 3 = 3 : Moyenne des véhicules sur la voie 2.
+\item L = 600 mètres.
+\item $d_{1}$ = 4/3 $d_{2}$ = 1.5 min
+\item $d_{2}$ = 1.1 min
+\end{itemize}
+\end{frame}
+
+
+\section{Longueur de la longueur de la file de véhicule}
+\begin{frame}
+$$X_{n+1} = (X_{n} + Y_{n} - K)^{+} + Z_{}n$$
+\begin{itemize}\itemsep3pt
+\item $(Y_{n})$ est une suite de variable aléatoire de même loi de Poisson de paramètre $\lambda_{1} d_{1}$
+\item $(Z_{n})$ est une suite de variable aléatoire de même loi de Poisson de paramètre $\lambda_{1} (d_{2} + 2L/v)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{definition}
+Chaîne de Markov\newline
+Une chaîne de Markov est un processus sans mémoire, non héréditaire.\newline
+ Dans l'évolution au cours du temps, l'état du processus à l'instant (n+1) ne dépend que de celui à l'instant n précédent, mais non de ses états antérieurs.
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{definition}
+On fait tourner une grosse simulation avec N=100 le nombre d'échantillons et n=2000    la taille des échantillons.
+\newline
+On obtient une moyenne de 16 / 17 véhicules.
+\begin{itemize}\itemsep2pt
+\item 0.60 de voiture = 5m
+\item 0.30 de bus = 10
+\item 0.10 de camion = 20m
+\end{itemize}
+Soit une file d'attente de 16.8 * (0.6*5 + 0.3*10 + 0.1*20) = 134.50 m
+\newline
+On regarde le nombre de fois où la file dépasse les 235 mètres :
+\newline
+p = 37 / 1000 = 0.037
+\end{definition}
+\end{frame}
+
+\section{Conclusion}
+Un modèle stochastique assez simple qui donne des résultats sur la quantité de véhicule.
+\newline
+Bien d'autre modèle existe...
+
+\end{document}

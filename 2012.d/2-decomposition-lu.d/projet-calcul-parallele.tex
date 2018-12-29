@@ -1,0 +1,237 @@
+% LAFOND Thomas - A***** Hechem
+% Décomposition LU - Small Project
+
+\documentclass[10pt,a4paper]{article}
+\usepackage{amsmath} % multline
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc} %french accents
+\usepackage[T1]{fontenc} %french accents
+\usepackage{fixltx2e}
+\usepackage{fullpage} % change margins
+\usepackage{ucs}
+\usepackage{graphicx}
+\usepackage{latexsym} %distribution tilde
+\usepackage{pstricks}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%\usepackage[french]{babel}
+%\newcommand{\nocomma}{}
+%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\usepackage[final]{pdfpages}
+\usepackage{pdfpages} 
+\usepackage{epsfig}
+\DeclareGraphicsExtensions{.ep s,.ps,.eps.gz,.ps.gz, .txt}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\headsep=25pt
+
+
+\begin{document}
+
+
+\thispagestyle{empty} 
+
+\begin{flushleft}
+\textbf{LAFOND Thomas}\\
+\end{flushleft}
+
+\begin{LARGE}
+\begin{center}
+\vfill
+\textbf{PROJET : CALCUL PARALLELE}\\
+\textbf{Décomposition LU}
+\vfill
+\end{center}
+\end{LARGE}
+
+
+\newpage
+
+\section*{SOMMAIRE}
+\hypertarget{SOMMAIRE}{}
+
+
+\begin{itemize}
+ \item[] ~~\hyperlink{Introduction}{Introduction} \hfill 3\\
+ \item[1] ~~\hyperlink{un peu de théorie}{un peu de théorie} \hfill 4\\
+ \item[2] ~~\hyperlink{Programme}{Programme} \hfill 5\\
+ \item[2.1] \hyperlink{Programme Séquentiel}{Programme Séquentiel} \hfill 5\\
+ \item[2.1] \hyperlink{Programme Parallèle}{Programme Parallèle} \hfill 5\\
+ \item[] ~~\hyperlink{Conclusion}{Conclusion} \hfill 5\\
+
+\end{itemize}
+
+\newpage
+
+\section*{Introduction}
+\hypertarget{Introduction}{}
+
+La décomposition \textbf{LU} est une méthode importante pour la résolution d'équation du type $Ax=b$, où $A$ et $b$ sont des matrices et vecteurs respectivement. Losque la matrice $A$ est de taille très grande, le calcul de la solution $x$ est parfois très fastidieux. Dans une première partie, nous verrons la théorie du concept, puis une brève application de cette méthode sur une matrice donnée. Pour finir, nous détaillerons le programme \textbf{MPI} effectuant la factorisation \textbf{LU} d'une matrice pleine distribuée par colonnes, ainsi que le calcul du vecteur solution par descente-remontée. 
+\newpage
+
+\section{un peu de théorie}
+\hypertarget{un peu de théorie}{}
+
+
+La décomposition \textbf{LU} consiste à transformer la matrice $A$ en un produit de matrices $L$ et $U$. Où $L$ est une matrice triangulaire inférieure avec les éléments diagonaux égaux à $1$ et $U$ une matrice triangulaire supérieure. $A$ peut s'écrire de la manière suivante : $A=LU$ selon certaines conditions. En effet, cette décomposition ne peut se faire que si $A$ est inversible et ses mineures sont inversibles. Voici ce que l'on veut résoudre : 
+
+$$Ax=b \Longleftrightarrow \begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & ... & 0\\
+1 & 0 & 2 & 0 & ... & ... & 0\\
+1 & 0 & 0 & 3 & 0 & ... & 0\\
+... & ... & ... & ... & ... & ... & \vdots \\
+1 & 0 & 0 & 0 & 0 & ... & n-1\\
+1 & 0 & 0 & 0 & 0 & ... & 0
+\end{pmatrix}
+\left( \begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+\vdots \\
+\vdots \\
+x_{n} \\
+\end{array} \right) 
+=
+\left( \begin{array}{c}
+2 \\
+3 \\
+4 \\
+\vdots \\
+\vdots \\
+n \\
+\end{array} \right)
+$$
+
+Ici, $A=\begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & ... & 0\\
+1 & 0 & 2 & 0 & ... & ... & 0\\
+1 & 0 & 0 & 3 & 0 & ... & 0\\
+... & ... & ... & ... & ... & ... & \vdots \\
+1 & 0 & 0 & 0 & 0 & ... & n-1\\
+1 & 0 & 0 & 0 & 0 & ... & 0
+\end{pmatrix}$, $b = \left( \begin{array}{c}
+2 \\
+3 \\
+4 \\
+\vdots \\
+\vdots \\
+n \\
+\end{array} \right)$, $x = \left( \begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+\vdots \\
+\vdots \\
+x_{n} \\
+\end{array} \right) $\linebreak\linebreak
+
+Ces mineures principales doivent être de déterminant non-nulle. En effet, les mineurs prinicpaux sont les matrices pour lesquelles on lui retranche la i-ème ligne et la j-ème colonne. \\
+
+D'après un calcul fastidieux, nous obtenons pour la matrice $A$ la factorisation \textbf{LU} suivante :
+
+$$\begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & .. & 0\\
+1 & 0 & 2 & 0 & .. & .. & 0\\
+1 & 0 & 0 & 3 & 0 & .. & 0\\
+.. & .. & .. & .. & .. & .. & \vdots \\
+1 & 0 & 0 & 0 & 0 & .. & n-1\\
+1 & 0 & 0 & 0 & 0 & .. & 0
+\end{pmatrix}
+=\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & .. & .. & 0\\
+1 & 1 & 0 & 0 & .. & .. & .. & 0\\
+1 & 1 & 1 & 0 & 0 & .. & .. & 0\\
+1 & 1 & 1 & 1 & .. & .. & \vdots & \vdots \\
+1 & 1 & 1 & 1 & 1 & .. & .. & 0\\
+1 & 1 & 1 & 1 & 1 & 1 & .. & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & .. & .. & 0\\
+0 & -1 & 2 & 0 & .. & .. & .. & 0\\
+0 & 0 & -2 & 3 & 0 & .. & .. & 0\\
+0 & 0 & 0 & -3 & 4 & 0 & \vdots & \vdots \\
+0 & 0 & 0 & 0 & -4 & 5 & .. & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & .. & -(n-1)
+\end{pmatrix}$$
+
+Où $L=\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & .. & .. & 0\\
+1 & 1 & 0 & 0 & .. & .. & .. & 0\\
+1 & 1 & 1 & 0 & 0 & .. & .. & 0\\
+1 & 1 & 1 & 1 & .. & .. & \vdots & \vdots \\
+1 & 1 & 1 & 1 & 1 & .. & .. & 0\\
+1 & 1 & 1 & 1 & 1 & 1 & .. & 1
+\end{pmatrix}$, et $U=\begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & .. & .. & 0\\
+0 & -1 & 2 & 0 & .. & .. & .. & 0\\
+0 & 0 & -2 & 3 & 0 & .. & .. & 0\\
+0 & 0 & 0 & -3 & 4 & 0 & \vdots & \vdots \\
+0 & 0 & 0 & 0 & -4 & 5 & .. & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & .. & -(n-1)
+\end{pmatrix}$
+\linebreak
+
+Nous remarquons ces deux matrices $L$ et $U$ sont calculées en fonction de $n$ pour cette matrice particulière $A$.\\
+
+Ajoutons tout de même que le déterminant de $A$ vaut :
+$$ det(A)=det(L)det(U)=1 \times det(U)=det(U)=(-1)^{n-1}(n-1)!$$
+
+Grace à cette décomposition, nous pouvons calculer la valeur de cette solution $x$ de l'équation $Ax=b$.\\
+
+Pour cela, nous étudions le système suivant :\\
+$$
+\left\{
+	\begin{array}{ll}
+		Ly=b \\
+		Ux=y \\	
+	\end{array}		
+\right.		
+$$
+La résolution du système linéaire $Ly=b$ est une méthode de descente. Une fois $y$ connue, la résolution du système linéaire $Ux=y$ est une méthode de remontée. Ainsi, la valeur de $x$ sera connue. 
+
+
+\section{Programme}
+\hypertarget{Programme}{}
+
+\subsection{Programme Séquentiel}
+\hypertarget{Programme Séquentiel}{}
+
+
+Ici, nous présentons le programme de la \textbf{factorisation LU} séquentiel. En pièces jointes, nous avons appliqué cet algorithme sur la matrice particulière \textbf{A}. \\
+Pour compiler ce programme, il faut tapper sur un terminal \textit{gcc LU-seq.c -o LU-seq}. \\
+Ce programme résoud aussi le système linéaire $Ax=b$ par la méthode de descente-remontée comme on l'a déjà montré dans la première section.\\
+Les lignes de l'algorithme sont commentées sur le fichier en pièces jointes.
+
+
+
+\subsection{Programme Parallèle}
+\hypertarget{Programme Parallèle}{}
+
+
+Ici, nous présentons le programme de la \textbf{factorisation LU} parallel.
+En pièces jointes, nous avons appliqué cet algorithme sur la matrice particulière \textbf{A}. \\
+Pour compiler ce programme, il faut tapper sur un terminal \textit{gcc -fopenmp LU-parallele-openmp.c}. \\
+Ce  programme résoud aussi le système linéaire $Ax=b$ par la méthode de descente-remontée comme on l'a déjà montré dans la première section. \\
+Nous utilisons un thread par ligne. En ce qui concerne les matrices $L$ et $U$, on calcule en même temps les coefficients des lignes du dessous. \\
+
+
+\section*{Conclusion}
+\hypertarget{Conclusion}{}
+
+Ce que l'on peut retenir, c'est la facilité de \textit{openmp}. En effet, son utilisation est relativement simple. Tous les calculs sont liés entre-eux. Chacune des condition \textit{while} est remplacée par \textit{openmp for}. Tout au long du projet, nous avons été dans une optique de découverte de calcul parallélisable. Cependant, une décomposition LU ne mérite pas forcément une parallélisation. 
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
