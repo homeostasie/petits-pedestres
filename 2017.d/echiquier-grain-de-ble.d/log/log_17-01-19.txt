@@ -1,0 +1,69 @@
+Sur la première case, il y a :  1 grains de blé, pour un total de :  1 grains sur l'échiquier.
+Sur la case :  2  , il y a :  2 grains de blé, pour un total de :  3 grains sur l'échiquier.
+Sur la case :  3  , il y a :  4 grains de blé, pour un total de :  7 grains sur l'échiquier.
+Sur la case :  4  , il y a :  8 grains de blé, pour un total de :  15 grains sur l'échiquier.
+Sur la case :  5  , il y a :  16 grains de blé, pour un total de :  31 grains sur l'échiquier.
+Sur la case :  6  , il y a :  32 grains de blé, pour un total de :  63 grains sur l'échiquier.
+Sur la case :  7  , il y a :  64 grains de blé, pour un total de :  127 grains sur l'échiquier.
+Sur la case :  8  , il y a :  128 grains de blé, pour un total de :  255 grains sur l'échiquier.
+Sur la case :  9  , il y a :  256 grains de blé, pour un total de :  511 grains sur l'échiquier.
+Sur la case :  10  , il y a :  512 grains de blé, pour un total de :  1023 grains sur l'échiquier.
+Sur la case :  11  , il y a :  1024 grains de blé, pour un total de :  2047 grains sur l'échiquier.
+Sur la case :  12  , il y a :  2048 grains de blé, pour un total de :  4095 grains sur l'échiquier.
+Sur la case :  13  , il y a :  4096 grains de blé, pour un total de :  8191 grains sur l'échiquier.
+Sur la case :  14  , il y a :  8192 grains de blé, pour un total de :  16383 grains sur l'échiquier.
+Sur la case :  15  , il y a :  16384 grains de blé, pour un total de :  32767 grains sur l'échiquier.
+Sur la case :  16  , il y a :  32768 grains de blé, pour un total de :  65535 grains sur l'échiquier.
+Sur la case :  17  , il y a :  65536 grains de blé, pour un total de :  131071 grains sur l'échiquier.
+Sur la case :  18  , il y a :  131072 grains de blé, pour un total de :  262143 grains sur l'échiquier.
+Sur la case :  19  , il y a :  262144 grains de blé, pour un total de :  524287 grains sur l'échiquier.
+Sur la case :  20  , il y a :  524288 grains de blé, pour un total de :  1048575 grains sur l'échiquier.
+Sur la case :  21  , il y a :  1048576 grains de blé, pour un total de :  2097151 grains sur l'échiquier.
+Sur la case :  22  , il y a :  2097152 grains de blé, pour un total de :  4194303 grains sur l'échiquier.
+Sur la case :  23  , il y a :  4194304 grains de blé, pour un total de :  8388607 grains sur l'échiquier.
+Sur la case :  24  , il y a :  8388608 grains de blé, pour un total de :  16777215 grains sur l'échiquier.
+Sur la case :  25  , il y a :  16777216 grains de blé, pour un total de :  33554431 grains sur l'échiquier.
+Sur la case :  26  , il y a :  33554432 grains de blé, pour un total de :  67108863 grains sur l'échiquier.
+Sur la case :  27  , il y a :  67108864 grains de blé, pour un total de :  134217727 grains sur l'échiquier.
+Sur la case :  28  , il y a :  134217728 grains de blé, pour un total de :  268435455 grains sur l'échiquier.
+Sur la case :  29  , il y a :  268435456 grains de blé, pour un total de :  536870911 grains sur l'échiquier.
+Sur la case :  30  , il y a :  536870912 grains de blé, pour un total de :  1073741823 grains sur l'échiquier.
+Sur la case :  31  , il y a :  1073741824 grains de blé, pour un total de :  2147483647 grains sur l'échiquier.
+Sur la case :  32  , il y a :  2147483648 grains de blé, pour un total de :  4294967295 grains sur l'échiquier.
+Sur la case :  33  , il y a :  4294967296 grains de blé, pour un total de :  8589934591 grains sur l'échiquier.
+Sur la case :  34  , il y a :  8589934592 grains de blé, pour un total de :  17179869183 grains sur l'échiquier.
+Sur la case :  35  , il y a :  17179869184 grains de blé, pour un total de :  34359738367 grains sur l'échiquier.
+Sur la case :  36  , il y a :  34359738368 grains de blé, pour un total de :  68719476735 grains sur l'échiquier.
+Sur la case :  37  , il y a :  68719476736 grains de blé, pour un total de :  137438953471 grains sur l'échiquier.
+Sur la case :  38  , il y a :  137438953472 grains de blé, pour un total de :  274877906943 grains sur l'échiquier.
+Sur la case :  39  , il y a :  274877906944 grains de blé, pour un total de :  549755813887 grains sur l'échiquier.
+Sur la case :  40  , il y a :  549755813888 grains de blé, pour un total de :  1099511627775 grains sur l'échiquier.
+Sur la case :  41  , il y a :  1099511627776 grains de blé, pour un total de :  2199023255551 grains sur l'échiquier.
+Sur la case :  42  , il y a :  2199023255552 grains de blé, pour un total de :  4398046511103 grains sur l'échiquier.
+Sur la case :  43  , il y a :  4398046511104 grains de blé, pour un total de :  8796093022207 grains sur l'échiquier.
+Sur la case :  44  , il y a :  8796093022208 grains de blé, pour un total de :  17592186044415 grains sur l'échiquier.
+Sur la case :  45  , il y a :  17592186044416 grains de blé, pour un total de :  35184372088831 grains sur l'échiquier.
+Sur la case :  46  , il y a :  35184372088832 grains de blé, pour un total de :  70368744177663 grains sur l'échiquier.
+Sur la case :  47  , il y a :  70368744177664 grains de blé, pour un total de :  140737488355327 grains sur l'échiquier.
+Sur la case :  48  , il y a :  140737488355328 grains de blé, pour un total de :  281474976710655 grains sur l'échiquier.
+Sur la case :  49  , il y a :  281474976710656 grains de blé, pour un total de :  562949953421311 grains sur l'échiquier.
+Sur la case :  50  , il y a :  562949953421312 grains de blé, pour un total de :  1125899906842623 grains sur l'échiquier.
+Sur la case :  51  , il y a :  1125899906842624 grains de blé, pour un total de :  2251799813685247 grains sur l'échiquier.
+Sur la case :  52  , il y a :  2251799813685248 grains de blé, pour un total de :  4503599627370495 grains sur l'échiquier.
+Sur la case :  53  , il y a :  4503599627370496 grains de blé, pour un total de :  9007199254740991 grains sur l'échiquier.
+Sur la case :  54  , il y a :  9007199254740992 grains de blé, pour un total de :  18014398509481983 grains sur l'échiquier.
+Sur la case :  55  , il y a :  18014398509481984 grains de blé, pour un total de :  36028797018963967 grains sur l'échiquier.
+Sur la case :  56  , il y a :  36028797018963968 grains de blé, pour un total de :  72057594037927935 grains sur l'échiquier.
+Sur la case :  57  , il y a :  72057594037927936 grains de blé, pour un total de :  144115188075855871 grains sur l'échiquier.
+Sur la case :  58  , il y a :  144115188075855872 grains de blé, pour un total de :  288230376151711743 grains sur l'échiquier.
+Sur la case :  59  , il y a :  288230376151711744 grains de blé, pour un total de :  576460752303423487 grains sur l'échiquier.
+Sur la case :  60  , il y a :  576460752303423488 grains de blé, pour un total de :  1152921504606846975 grains sur l'échiquier.
+Sur la case :  61  , il y a :  1152921504606846976 grains de blé, pour un total de :  2305843009213693951 grains sur l'échiquier.
+Sur la case :  62  , il y a :  2305843009213693952 grains de blé, pour un total de :  4611686018427387903 grains sur l'échiquier.
+Sur la case :  63  , il y a :  4611686018427387904 grains de blé, pour un total de :  9223372036854775807 grains sur l'échiquier.
+Sur la case :  64  , il y a :  9223372036854775808 grains de blé, pour un total de :  18446744073709551615 grains sur l'échiquier.
+Nombre de grain de blé sur l'échéquier 18446744073709551615
+Écriture scientifique :  1.8446744073709552e+19
+Poids du blé total en tonnes :  922337203685.4775  tonnes
+La production annuelle de blé est de  600000000 tonnes de blé
+Il faudra :  1537.2286728091292 années à l'empereur afin de combler ça promesse.
