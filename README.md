@@ -13,6 +13,10 @@
 
 **C++** : Le jeu de la vie imaginé par John Horton Conway en 1970 est un automate cellulaire.
 
+#### 3 - Mooc : Differential equations in action
+
+**Python** : Les deux premières parties : Houston we have a problem & Houston we have a solution.
+
 ## 2015
 
 #### 1 - Collection de cartes
@@ -35,9 +39,35 @@
 
 ## 2018
 
-#### 1 - Morpions
+#### 1 - Interpolation
+
+**Python** : Petite interpolation graphique d'un tableau de donnée.
+
+#### 2 - Morpions
 
 **C** : Un petit morpion CLI en C.
+
+
+## Discussions
+
+Questions de maths suite à des discussions
+
+#### 1 - Pour le frangin
+
+**Latex**
+
+* Second degrée - *2018*
+* Statistiques - *2018*
+* Suites - *2018*
+
+#### 2 - Max
+
+**c++** : Vector - *2017*
+
+#### 3 - Discord Mathmématiques 
+
+**Latex** : Équation avec racine carré - *2018*
+
 
 
 ## Contributeur
