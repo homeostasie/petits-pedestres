@@ -69,7 +69,6 @@ Questions de maths suite à des discussions
 **Latex** : Équation avec racine carré - *2018*
 
 
-
 ## Contributeur
 
 * - **LAFOND Thomas - thomas.lafond@ac-lyon.fr / thom@homeostasie.eu**
@@ -78,9 +77,3 @@ Questions de maths suite à des discussions
 ## Licence
 
 - MIT Licence
-
-
-
-
- 
-
