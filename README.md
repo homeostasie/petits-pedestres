@@ -29,7 +29,7 @@
 
 **Python** : En tant qu'intendant du roi, vous compter le nombre de grain de blé que Sissa a gagner lors de sa requête auprès de l'empereur.
 
-#### RPN
+#### 2 - RPN
 
 **Python** : Petite implémentation d'une calculette rpn en Python.
 
