@@ -17,38 +17,25 @@
 
 ## 2014 
 
-* **1 - Calcul de PI par répétitions** : **Python / C**.
-Calcul de PI par chaine de Markov.
-
-* **2 - Jeu de la vie** : **C++**.
-Le jeu de la vie imaginé par John Horton Conway en 1970 est un automate cellulaire.
-
+* **1 - Calcul de PI par répétitions** : **Python / C**. Calcul de PI par chaine de Markov.
+* **2 - Jeu de la vie** : **C++**. Le jeu de la vie imaginé par John Horton Conway en 1970 est un automate cellulaire.
 * **3 - Mooc : Differential equations in action** : **Python**.
 Les deux premières parties : Houston we have a problem & Houston we have a solution.
 
 ## 2015
 
-* **1 - Collection de cartes** : **R**
-Combien faut-il acheter de paquet de cartes afin de former une collection complète ?
-
-* **2 - Lièvre VS Tortue** : **Python**.
-Un petit jeu de probabilité d'une course du lièvre et de la tortue.
+* **1 - Collection de cartes** : **R**. Combien faut-il acheter de paquet de cartes afin de former une collection complète ?
+* **2 - Lièvre VS Tortue** : **Python**. Un petit jeu de probabilité d'une course du lièvre et de la tortue.
 
 ## 2017
 
-* **1 - Échiquier de Sissa** : **Python**.
-En tant qu'intendant du roi, vous compter le nombre de grain de blé que Sissa a gagner lors de sa requête auprès de l'empereur.
-
-* **2 - RPN** : **Python**.
-Petite implémentation d'une calculette rpn en Python.
+* **1 - Échiquier de Sissa** : **Python**. En tant qu'intendant du roi, vous compter le nombre de grain de blé que Sissa a gagner lors de sa requête auprès de l'empereur.
+* **2 - RPN** : **Python**. Petite implémentation d'une calculette rpn en Python.
 
 ## 2018
 
-* **1 - Interpolation** : **Python**.
-Petite interpolation graphique d'un tableau de donnée.
-
-* **2 - Morpions** : **C**.
-Un petit morpion CLI en C.
+* **1 - Interpolation** : **Python**. Petite interpolation graphique d'un tableau de donnée.
+* **2 - Morpions** : **C**. Un petit morpion CLI en C.
 
 
 ## Discussions
