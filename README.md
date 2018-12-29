@@ -5,37 +5,37 @@
 
 ## 2014 
 
-### Calcul de PI par répétitions
+#### Calcul de PI par répétitions
 
 **Python / C** : Calcul de PI par chaine de Markov.
 
-### Jeu de la vie
+#### Jeu de la vie
 
 **C++** : Le jeu de la vie imaginé par John Horton Conway en 1970 est un automate cellulaire.
 
 ## 2015
 
-### Collection de cartes
+#### Collection de cartes
 
 **R** : Combien faut-il acheter de paquet de cartes afin de former une collection complète ?
 
-### Lièvre VS Tortue
+#### Lièvre VS Tortue
 
 **Python** : Un petit jeu de probabilité d'une course du lièvre et de la tortue.
 
 ## 2017
 
-### Échiquier de Sissa
+#### Échiquier de Sissa
 
 **Python** : En tant qu'intendant du roi, vous compter le nombre de grain de blé que Sissa a gagner lors de sa requête auprès de l'empereur.
 
-### RPN
+#### RPN
 
 **Python** : Petite implémentation d'une calculette rpn en Python.
 
 ## 2018
 
-## Morpions
+#### Morpions
 
 **C** : Un petit morpion CLI en C.
 
