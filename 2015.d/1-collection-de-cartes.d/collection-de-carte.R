@@ -14,11 +14,11 @@ tailleCollection = 90
 
 # Le nombre de carte par lot lors de l'achat.
 # abrégé en TL dans les commentaires
-tailleLot = 1
+tailleLot = 2
 
 # Le nombre de simulation total et les itérations succéssives
-nbrSimulation = 1000
-iteSimulation = 1
+nbrSimulation = 5000
+iteSimulation = 100
 
 
 ####################
