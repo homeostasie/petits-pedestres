@@ -7,6 +7,9 @@ exo1:
 	pdflatex tex/exo1-racine.tex
 	pdflatex tex/exo1-racine.tex
 
+liens:
+	pdflatex tex/liens.tex
+	pdflatex tex/liens.tex
 
 # nettoyage			
 proper:
