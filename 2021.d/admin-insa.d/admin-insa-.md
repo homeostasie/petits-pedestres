@@ -18,12 +18,13 @@ Je veux bien donner quelques éléments mais j'ai besoin de compléments et pré
    
 Sont pris en compte :
 
-   * les résultats des matières scientifiques (les 5 : M-P-SVT-SI-NSI) et des élèves faisant par exemple P-SI et maths complémentaires sont aussi étudiés, * * je pense avoir compris que sans spé maths ni maths complémentaire le dossier n'est pas étudié.
-   * les notes de contrôle continu LV de 1ere et Term
-   * les notes  de contrôle continu Français. Attention les notes de bac de l'EAF ne sont pas prises en compte (interdiction formelle).
+    1. les résultats des matières scientifiques (les 5 : M-P-SVT-SI-NSI) et des élèves faisant par exemple P-SI et maths complémentaires sont aussi étudiés, * * je pense avoir compris que sans spé maths ni maths complémentaire le dossier n'est pas étudié.
+    2. les notes de contrôle continu LV de 1ere et Term
+    3. les notes  de contrôle continu Français. Attention les notes de bac de l'EAF ne sont pas prises en compte (interdiction formelle).
     
 Ne sont pas pris en compte :
-    * les notes de philo, d'HG
+
+    1. les notes de philo, d'HG
     
 * La lettre de motivation (22 000 lettres) n'est pas étudiée de façon générale.
     
