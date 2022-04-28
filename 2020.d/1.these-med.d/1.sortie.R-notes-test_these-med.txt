@@ -1,0 +1,71 @@
+[1] "A. Test de normalité"
+[1] "1. Normalité : PréTest FGSM3"
+
+	Shapiro-Wilk normality test
+
+data:  data.fgsm3$pre
+W = 0.84991, p-value = 9.284e-12
+
+[1] "2. Normalité : PostTest FGSM3"
+
+	Shapiro-Wilk normality test
+
+data:  data.fgsm3$post
+W = 0.77869, p-value = 1.46e-14
+
+[1] "3. Normalité : PréTest Élèves"
+
+	Shapiro-Wilk normality test
+
+data:  data.eleves$pre
+W = 0.94195, p-value = 4.07e-05
+
+[1] "4. Normalité : PréTest Élèves"
+
+	Shapiro-Wilk normality test
+
+data:  data.eleves$post
+W = 0.95092, p-value = 0.0001831
+
+[1] "B. FGSM3 vs Eleves"
+[1] "1. Notes : PréTest FGSM3 vs PréTest Élèves"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  notes.pre.fgsm3vseleves by groupes.FGSM3.ELEVES
+W = 2097.5, p-value < 2.2e-16
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "2. Notes : PostTest FGSM3 vs PostTest Élèves"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  notes.post.fgsm3vseleves by groupes.FGSM3.ELEVES
+W = 2013.5, p-value < 2.2e-16
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "3. Notes : PréTest FGSM3 vs PostTest Élèves"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  notes.post.fgsm3vseleves by groupes.FGSM3.ELEVES
+W = 2013.5, p-value < 2.2e-16
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "C. pré vs Post"
+[1] "1. Notes : PréTest FGSM3 vs PostTest FGSM3"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data.fgsm3$pre and data.fgsm3$post
+V = 951, p-value = 6.491e-05
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "2. Notes : PréTest Élèves vs PostTest Élèves"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data.eleves$pre and data.eleves$post
+V = 976, p-value = 1.321e-07
+alternative hypothesis: true location shift is not equal to 0
+
