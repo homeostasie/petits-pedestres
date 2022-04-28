@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage{geometry,marginnote} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,french]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern,numprint}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx,float,grffile}
+\usepackage{pst-eucl, pst-plot,units} 
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+
+\usepackage{fancyhdr} \pagestyle{fancyplain} \fancyhead{} \fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+
+\begin{document}
+
+\section{ex16}
+
+\textbf{Initialisation :} \\
+
+\subsection*{a)}
+
+Pour $n = 0$, (la famille est vide). $\prod_{i=1}^{0}(1-a_i) = 1$ (produit vide) et $\sum_{i=1}^{0}(a_i) = 0 $ (somme vide). \\
+
+Or $1 \geq 1$ donc la propriété est vérifiée. 
+
+\textbf{Hérédité :} \\
+Soit $n \in \mathbb{N}$. Supposons vrai : $\forall (a_i)_{i \in [1,n]} \in [0,1]^{[1,n]}$, on a $\prod_{i=1}^{n}(1-a_i) \geq 1 - \sum_{i=1}^{n}(a_i)$ 
+
+
+Soit $(a_i)_{i \in [1,n+1]}$ une famille d'éléments de [0,1]. \\
+
+On sait que $\prod_{i=1}^{n}(1-a_i) \geq 1 - \sum_{i=1}^{n}(a_i)$ 
+
+Donc 
+\begin{align}
+(1 - a_{n+1}) \prod_{i=1}^{n}(1-a_i) &= \prod_{i=1}^{n+1}(1-a_i) \geq (1 - a_{n+1}) (1 - \sum_{i=1}^{n}(a_i)) \\
+                                     &= 1 - \sum_{i=1}^{n+1}(a_i) + a_{n+1} \sum_{i=1}^{n}(a_i) \\
+                                     &\geq 1 - \sum_{i=1}^{n+1}(a_i) \\
+\end{align}
+car $a_{n+1} \sum_{i=1}^{n}(a_i) \geq 0$
+
+Donc la propriété est héréditaire et donc vraie $\forall n \in \mathbb{N}$.
+
+\subsection*{b)}
+
+$\sum_{i=1}^{n}(\dfrac{a_i}{m} - 1 ) = \dfrac{1}{m} \sum_{i=1}^{n}(a_i) - \sum_{i=1}^{n}(1) = \dfrac{\sum_{i=1}^{n}(a_i)}{\dfrac{1}{n}\sum_{i=1}^{n}(a_i)} - n = n - n = 0$.
+
+\subsection*{c)}
+
+$\forall i \in [1,n] ln \dfrac{a_i}{n} \leq \dfrac{a_i}{m} - 1$ car $\dfrac{a_i}{m} > 0$.
+
+donc en sommant $\sum_{i=1}^{n}(ln \dfrac{a_i}{m}) \leq \sum_{i=1}^{n}(\dfrac{a_i}{m}- 1) = 0$.
+
+Or, $\sum_{i=1}^{n}(ln \dfrac{a_i}{m}) = ln (\prod_{i=1}^{n}(\dfrac{a_i}{m})) = ln (\dfrac{1}{m^n} \prod_{i=1}^{n}(a_i)) \leq 0 $.
+
+Donc $\dfrac{1}{m^n} \prod_{i=1}^{n}(a_i)) \leq 1 $ donc $\prod_{i=1}^{n}(a_i) \leq m^n$ 
+
+i;e, $ (\prod_{i=1}^{n}(a_i))^{\frac{1}{n}} \leq m$ , CQFD.
+
+\subsection*{d)}
+
+$A(\dfrac{1}{a_1},...,\dfrac{1}{a_n}) = \dfrac{1}{n} \sum_{i=1}^{n}(\dfrac{1}{a_i} = \dfrac{1}{1 / \sum_{i=1}^{n}(\dfrac{1}{a_i})} = \dfrac{1}{H(a_1,..., a_n)}$
+
+Par conséquent, comme $G(\dfrac{1}{a_1},...,\dfrac{1}{a_n}) \leq \dfrac{1}{H(a_1,..., a_n)}$
+
+
+On a : $H(a_{1},..., a_{n}) \leq \dfrac{1}{ G( \frac{1}{a_1},...,\frac{1}{a_n} ) } = (\prod_{i=1}^{n} \dfrac{1}{a_i})^{-1/n}$ \newline
+$= (\prod_{i=1}^{n} (\dfrac{1}{a_i})^{-1})^{1/n}$ \newline
+$= (\prod_{i=1}^{n} (a_i))^{1/n}$ \newline
+$= G(a_1,...,a_n)$
+
+CQFD
+
+
+
+\end{document}
