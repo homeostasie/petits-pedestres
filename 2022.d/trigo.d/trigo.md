@@ -178,7 +178,7 @@ Souvent quand ça marche bien dans un sens, on se pose toujours la question de s
 
 Les trois fonctions réciproques : **arccos**, **arcsin**, **arctan** sont accessibles via la calculatrice. On demande à la calculatrice : *Je te donne le cœfficient : **cos**, **sin** ou **tan** et toi, tu me donnes l'angle.*. Souvent l'accès est avec la touche seconde ou shift puis la touche cos, sin et tan.
 
-**ex5 : Calculer l'angle à partir du cœfficient.**
+**ex6 : Calculer l'angle à partir du cœfficient.**
 
 ### À partir des côtés
 
@@ -207,7 +207,7 @@ Pour connaître la valeur de l'angle, on utilise ce qu'on appelle la fonction r�
 
 **angle = arccos(6/10) = 53,13°**
 
-**ex6 : Calculer l'angle à partir des longueurs.**
+**ex7 : Calculer l'angle à partir des longueurs.**
 
 
 ## D - Le paradis des problèmes
