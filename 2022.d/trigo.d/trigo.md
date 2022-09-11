@@ -68,7 +68,7 @@ L'idée est que la calculatrice va nous donner ces cœfficients en fonction de l
 
 cos(30) pour un angle de 30°. Si l'angle avait été 48°, on calcule cos(48)
 
-Ici, c'est bien de manipuler un peu ces calculs de cœffcients avant de vraiment rentrer dans les exercices un peu plus dur. 
+Ici, c'est bien de manipuler un peu ces calculs de cœfficients avant de vraiment rentrer dans les exercices un peu plus dur. 
 
 On reste dans cette configuration de triangle et on change un peu la longueur du grand côté et l'angle.
 
@@ -98,9 +98,6 @@ Dans un triangle rectangle, si on marque un angle, on peut nommer les trois côt
 
 
 **ex3 : Repérer le nom mathématiques des côtés dans des triangles rectangles.**
-
-
-**ex4 : Repérer le nom mathématiques des côtés dans des triangles rectangles.**
 
 On peut reprendre l'exercice 2 avec plus de précision.
 
@@ -137,16 +134,36 @@ Pour faire tout ça, on a besoin de trois formules : les 3 coeff qui dépendent 
 
 Un problème :  il est assez dur d'apprendre ces trois formules dans ce sens. Il est souvent plus simple de retenir les formules avec les quotients.
 
-**cos = adj / hyp**
-**sin = opp / hyp**
-**tan = opp / adj**
+* **cos = adj / hyp**
+* **sin = opp / hyp**
+* **tan = opp / adj**
 
 Il y a deux phrases mnémotechniques pour les retenir : 
 
 * **CAH SOH TOA** (une sorte de *casse-o-toi*)
 * **SOH CAH TOA** 
 
-**ex4 : l'exo type ; on donne une longueur et un angle et on demande les autres longueurs**
+La difficulté est vraiment, vraiment maintenant. Parce qu'on doit adapté nos envies et nos connaissances. Il ne faut pas partir que "le côté que je cherche est égal à celui que je connais fois le coeff".
+
+Parce qu'à partir d'une définition, je vais pouvoir calculer de deux manières.
+
+**cos = adj / hyp** => **adj = hyp × cos(angle)** ET **hyp = adj / cos(angle)**
+**sin = opp / hyp** => **opp = hyp × sin(angle)** ET **hyp = opp / sin(angle)**
+**tan = opp / adj** => **opp = adj × tan(angle)** ET **adj = opp × tan(angle)**
+
+Là, la stratégie est de se poser les questions : 
+
+**"Qu'est-ce que j'ai ?" et "Qu'est-ce que je veux ?"
+
+**ex4 : Modéliser : "je vais utiliser".**
+
+
+**ex5 : l'exo type ; on donne une longueur et un angle et on demande les autres longueurs**
+
+
+
+
+
 
 ## C - Dans l'autre sens.
 
