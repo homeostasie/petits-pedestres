@@ -125,7 +125,7 @@ Ensuite il faut accepter l'objectif de base :
 
 **Dans un triangle rectangle, à partir d'un angle et d'un côté, je vais pouvoir calculer les deux autres côtés.**
 
-Pour faire tout ça, on a besoin de trois formules (3 coeff qui dépendent des angles): 
+Pour faire tout ça, on a besoin de trois formules : les 3 coeff qui dépendent des angles : 
 
 * **cosinus**
 * **sinus**
@@ -135,7 +135,7 @@ Pour faire tout ça, on a besoin de trois formules (3 coeff qui dépendent des a
 * **opp = hyp × sin(angle)**
 * **opp = adj × tan(angle)**
 
-Le problème,  il est assez dur d'apprendre ces trois formules. Il est souvent plus simple de retenir les formules avec les quotients.
+Un problème :  il est assez dur d'apprendre ces trois formules dans ce sens. Il est souvent plus simple de retenir les formules avec les quotients.
 
 **cos = adj / hyp**
 **sin = opp / hyp**
@@ -143,32 +143,35 @@ Le problème,  il est assez dur d'apprendre ces trois formules. Il est souvent p
 
 Il y a deux phrases mnémotechniques pour les retenir : 
 
-* **CAH SOH TOA** (une sorte de casse-o-toi)
+* **CAH SOH TOA** (une sorte de *casse-o-toi*)
 * **SOH CAH TOA** 
 
 **ex4 : l'exo type ; on donne une longueur et un angle et on demande les autres longueurs**
 
 ## C - Dans l'autre sens.
 
-Souvent quand ça marche bien dans un sens, on se pose toujours la question de savoir si on ne pourrait pas s'en servir dans l'autre. (ex réciproque de Pythagore)
+Souvent quand ça marche bien dans un sens, on se pose toujours la question de savoir si on ne pourrait pas s'en servir dans l'autre. (ex réciproque de Pythagore) L'idée de base ici est que si on nous donne un triangle rectangle avec deux longueurs (et pas seulement une), alors on va pouvoir calculer les angles de ce triangle.
 
-L'idée de base ici est que si on nous donne un triangle rectangle avec deux longueurs (et pas seulement une), alors on va pouvoir calculer les angles de ce triangle.
+### À partir des coeff
 
-Dans l'idée si je peux connaître le coefficient à partir de l'angle : **sin(30) = 0.5** 
+* Dans l'idée si je peux connaître le coefficient à partir de l'angle : **sin(30) = 0.5** 
 
-j'ai envie de dire que si je connais le coefficient alors je dois aussi pouvoir connaître l'angle : **30 = arcsin(0.5)**.
+* J'ai envie de dire que si je connais le coefficient alors je dois aussi pouvoir connaître l'angle : **30 = arcsin(0.5)**.
+
 
 Les trois fonctions réciproques : **arccos**, **arcsin**, **arctan** sont accessibles via la calculatrice. On demande à la calculatrice : *Je te donne le cœfficient : **cos**, **sin** ou **tan** et toi, tu me donnes l'angle.*. Souvent l'accès est avec la touche seconde ou shift puis la touche cos, sin et tan.
 
 **ex5 : Calculer l'angle à partir du cœfficient.**
 
+### À partir des côtés
+
 C'est un peu plus dur, à partir des longueurs car il faut repartir des définitions.
 
 En effet, comme : 
 
-**cos = adj / hyp**
-**sin = opp / hyp**
-**tan = opp / adj**
+* **cos = adj / hyp**
+* **sin = opp / hyp**
+* **tan = opp / adj**
 
 On peut facilement connaître la valeur d'un de ces cœfficients. Époque moderne, on se passe de table, la calculatrice va aussi pouvoir nous donner la valeur exacte de l'angle en fonction de la valeur du cœfficient.
 
