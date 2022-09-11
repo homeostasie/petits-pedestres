@@ -75,8 +75,8 @@ On reste dans cette configuration de triangle et on change un peu la longueur du
 **ex2 - calculer des cœfficients**
 
 * Si le grand côté mesure 12 et l'angle 45°
-    * le côté du dessous mesure : .................................. (12 × cos(45))
-    * le côté de gauche mesure  : .................................. (12 × sin(45))
+    * le côté du dessous mesure : **12 × cos(45)**
+    * le côté de gauche mesure  : **12 × sin(45)**
 
 
 Si pas trop allergique à la proportionnalité, on peut marquer cette phrase : 
