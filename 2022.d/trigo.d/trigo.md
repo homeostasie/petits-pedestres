@@ -1,29 +1,30 @@
-La trigonométrie.
+# La trigonométrie.
 
-L'idée de base est de chercher à comprendre un peu mieux comment son liées les longueurs et les angles dans un triangle.
+*L'idée de base est de chercher à comprendre un peu mieux comment son liées les longueurs et les angles dans un triangle.*
 
-# A - Une grosse introduction
+## A - Une grosse introduction
 
-## 1 - Les triangles semblables
+### 1 - Les triangles semblables
 
 Un premier bon réflexe est de faire un rappel sur les triangles semblables.
 
-#### Rappel vieux mais important : 
+**Rappel vieux mais important :**
+
 - **la somme des angles dans un triangle fait 180°.**
 
 
-#### Nouveauté du chapitre triangles semblables.
+**Nouveauté du chapitre triangles semblables.**
 
 - **Deux triangles sont semblables s'ils ont les trois mêmes angles.**
 - **Deux triangles semblables ont des côtés deux à deux proportionnels.**
 
 Ici, on découvre l'idée que dans un triangle la notion d'angle et de longueur sont en lien. Il y a une question de proportionnalité. On peut passer d'une longueur à une autre en multipliant toujours par un même nombre.
 
-## 2 - Le triangle rectangle.
+### 2 - Le triangle rectangle.
 
 On pourrait le faire pour tous les triangles (au programme de première ou term), mais pour que ça soit plus simple, on va juste se concentrer sur les triangles rectangles. On peut visualise cette idée assez simplement :
 
-![triangles]()
+![triangles](https://raw.githubusercontent.com/homeostasie/petits-pedestres/master/2022.d/trigo.d/triangles.png)
 
 Ici le côté [BC] est plus petit que [BD] et de même [AC] est plus petit que [AD]... et ça, c'est à cause de l'angle en A, BÂD qui est plus grand que celui BÂC.
 
@@ -32,7 +33,7 @@ En lien avec les rappels; Comme on a un angle droit (=90°) dès qu'on connaît 
 **ex1 : Calculer les angles dans un triangle.**
 
 
-## 3 - La proportionnalité
+### 3 - La proportionnalité
 
 L'idée de départ de la trigo (un peu dur à prouver simplement) :
 
@@ -40,11 +41,11 @@ Si on a un triangle rectangle et qu'on connaît un angle et un côté, alors on 
 
 La question est comment avoir ce cœfficient... Ben, on a un peu de chance parce que des gens se sont un peu cassés la tête à ça avant... Avant, on nous donnait des tables sur papier, voir pour les plus riches une règle à calculer.
 
-![tables]()
+![tables](https://raw.githubusercontent.com/homeostasie/petits-pedestres/master/2022.d/trigo.d/table.png)
 
-![règles]()
+![règles](https://raw.githubusercontent.com/homeostasie/petits-pedestres/master/2022.d/trigo.d/regle.jpg)
 
-## 4 - Les cœfficients 
+### 4 - Les cœfficients 
 
 Il reste deux questions : 
 
@@ -54,10 +55,11 @@ Il reste deux questions :
 
 #### Calculer le cœfficient
 
-
 Maintenant on a un peu de chance, on a la calculatrice. La calculatrice permet de calculer directement ces cœfficients. On s'assure que la calculatrice est en mode degré (mesure d'angle et un petit d affiché en haut de l'écran.)
 
 Par exemple, dans ce triangle rectangle avec un angle de 30° (et l'autre de 60°) et un grand côté qui fait 10cm.
+
+![reciproque](https://raw.githubusercontent.com/homeostasie/petits-pedestres/master/2022.d/trigo.d/tria1.png)
 
 * Le côté du dessous fait **10 × cos(30) = 8,66cm**.
 * Le côté de gauche fait **10 × sin(30) = 5cm**.
@@ -112,7 +114,7 @@ Il faut essayer de bien insister sur le fait que
 
 Et si déjà on arrive à ce point, alors la trigonométrie est comprise. Maintenant, il reste à réussir à l'appliquer tout le temps et rapidement.
 
-# B - On rentre dans le chapitre
+## B - On rentre dans le chapitre
 
 Pour s'en sortir en trigonométrie, il faut des pré-requis : 
 
@@ -146,7 +148,7 @@ Il y a deux phrases mnémotechniques pour les retenir :
 
 **ex4 : l'exo type ; on donne une longueur et un angle et on demande les autres longueurs**
 
-# C - Dans l'autre sens.
+## C - Dans l'autre sens.
 
 Souvent quand ça marche bien dans un sens, on se pose toujours la question de savoir si on ne pourrait pas s'en servir dans l'autre. (ex réciproque de Pythagore)
 
@@ -170,7 +172,7 @@ En effet, comme :
 
 On peut facilement connaître la valeur d'un de ces cœfficients. Époque moderne, on se passe de table, la calculatrice va aussi pouvoir nous donner la valeur exacte de l'angle en fonction de la valeur du cœfficient.
 
-![reciproque]()
+![reciproque](https://raw.githubusercontent.com/homeostasie/petits-pedestres/master/2022.d/trigo.d/reciproque.png)
 
 Ici, on connaît :
 
@@ -188,6 +190,6 @@ Pour connaître la valeur de l'angle, on utilise ce qu'on appelle la fonction r�
 **ex6 : Calculer l'angle à partir des longueurs.**
 
 
-# D - Le paradis des problèmes
+## D - Le paradis des problèmes
 
 La trigonométrie est le paradis des problèmes parce qu'on peut mélanger des questions d'angles et des questions de longueurs. On a juste besoin d'un triangle rectangle... et c'est souvent le cas en math. Dès qu'on nous donne un triangle rectangle, une longueur et un angle, ça veut dire : *"probablement de la trigo."*
