@@ -18,6 +18,22 @@ math_intro-edo-1:
 	mv math_intro-edo-1.pdf '$(PDFDIR)'/math_intro-edo-1.pdf
 
 
+info_intro-go-1:
+	pdflatex info_intro-go.d/info_intro-go-1.tex
+	pdflatex info_intro-go.d/info_intro-go-1.tex
+	mv info_intro-go-1.pdf '$(PDFDIR)'/info_intro-go-1.pdf
+
+astro_deux-infinis-4:
+	pdflatex astro-deux-infinis.d/astro_2-infinis-4.tex
+	pdflatex astro-deux-infinis.d/astro_2-infinis-4.tex
+	mv astro_2-infinis-4.pdf '$(PDFDIR)'/astro_2-infinis-4.pdf	
+
+astro_ss:
+	pdflatex astro_system.d/astro_ss.tex
+	pdflatex astro_system.d/astro_ss.tex
+	mv astro_ss.pdf '$(PDFDIR)'/astro_system-solar-ss.pdf	
+
+
 
 # nettoyage		
 proper:
