@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage{geometry,marginnote} % Pour passer au format A4
+\geometry{hmargin=1cm, vmargin=1cm} % 
+
+% Page et encodage
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[english,french]{babel} % Français et anglais
+\usepackage[utf8]{inputenc} 
+
+\usepackage{lmodern,numprint}
+\setlength\parindent{0pt}
+
+% Graphiques
+\usepackage{graphicx,float,grffile}
+\usepackage{pst-eucl, pst-plot,units} 
+
+% Maths et divers
+\usepackage{amsmath,amsfonts,amssymb,amsthm,verbatim}
+\usepackage{multicol,enumitem,url,eurosym,gensymb}
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+% Sections
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape}
+
+% Tête et pied de page
+\usepackage{fancyhdr} \pagestyle{fancyplain} \fancyhead{} \fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\newcommand{\Pointilles}[1][3]{%
+  \multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+\newtheorem{Definition}{Définition}
+
+\usepackage{siunitx}
+\sisetup{
+    detect-all,
+    output-decimal-marker={,},
+    group-minimum-digits = 3,
+    group-separator={~},
+    number-unit-separator={~},
+    inter-unit-product={~}
+}
+
+\setlength{\columnseprule}{1pt}
