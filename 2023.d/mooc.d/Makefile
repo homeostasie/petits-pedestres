@@ -27,6 +27,7 @@ info_crypto-1:
 	pdflatex info_Applied-Crypto-1.tex
 	pdflatex info_Applied-Crypto-1.tex
 	mv info_Applied-Crypto-1.pdf '$(PDFDIR)'/info_Applied-Crypto-1.pdf
+	
 astro_ss:
 	pdflatex astro_Solar-System.tex
 	pdflatex astro_Solar-System.tex
